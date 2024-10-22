@@ -111,7 +111,26 @@ img {
 }
 
 /* ================== REUSABLE CSS CLASSES ================== */
- 
+.section {
+    padding             : 6rem 0 2 rem;
+}
+
+.section_title {
+    font-size           : var(--h1-font-size);
+    color               : var(--title-color);
+}
+
+.section_subtitle {
+    display             : block;
+    font-size           : var(--small-font-size);
+    margin-bottom       : 4rem;
+}
+
+.section_title,
+.section_subtitle {
+    text-align          : center;
+}
+
 /* ================== LAYOUT ================== */
  
 /* ================== BUTTONS ================== */
