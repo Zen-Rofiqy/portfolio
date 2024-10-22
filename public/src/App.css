@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
 /* ================== Variable CSS ================== */
-:root{
+:root {
     --header-height     : 3rem;
     /* ======= Colors ======= */
     /* Color mode HSL(hue, saturation, lightness) */
@@ -50,7 +50,7 @@
 }
 
 /* Responsive typography */
-@media screen and (max-width: 992px){
+@media screen and (max-width: 992px) {
     :root{
         --big-font-size     : 2.75rem;
         --h1-font-size      : 1.5rem;
@@ -63,7 +63,53 @@
 }
 
 /* ================== BASE ================== */
- 
+* {
+    margin              : 0;
+    padding             : 0;
+    box-sizing          : border-box;
+} 
+
+html{
+    scroll-behavior     : smooth;
+}
+
+body,
+button,
+input,
+textarea {
+    font-family         : var(--body-font);
+    font-size           : var(--normal-font-size);
+}
+
+body {
+    background-color    : var(--body-color);
+    color               : var(--text-color);
+}
+
+h1, h2, h3 {
+    color               : var(--title-color);
+    font-weight         : var(--font-semi-bold);
+}
+
+ul {
+    list-style          : none;
+}
+
+a {
+    text-decoration     : none;
+}
+
+button {
+    cursor              : pointer;
+    border              : none;
+    outline             : none;
+}
+
+img {
+    max-width           : 100%;
+    height              : auto;
+}
+
 /* ================== REUSABLE CSS CLASSES ================== */
  
 /* ================== LAYOUT ================== */
@@ -71,4 +117,13 @@
 /* ================== BUTTONS ================== */
  
 /* ================== BREAKPOINTS ================== */
- 
+ /* For large devices */
+ @media screen and (max-width: 992px) {
+
+ }
+
+ /* For medium devices */
+ @media screen and (max-width: 768) {
+
+ }
+
