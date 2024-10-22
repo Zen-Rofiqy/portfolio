@@ -1,0 +1,12 @@
+/* ================== Google Fonts ================== */
+
+/* ================== Variable CSS ================== */
+
+:root{
+    --header-height: 3rem;
+    /* ======= Colors ======= */
+    /* Color mode HSL(hue, saturation, lightness) */
+    --hue: 0;
+    --sat: 0%;
+    --title-color: hsl(var(--hue), var(--sat), 20%);
+}
