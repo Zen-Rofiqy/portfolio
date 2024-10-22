@@ -4,6 +4,7 @@
 /* ================== Variable CSS ================== */
 :root {
     --header-height     : 3rem;
+
     /* ======= Colors ======= */
     /* Color mode HSL(hue, saturation, lightness) */
     --hue               : 0;
