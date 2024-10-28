@@ -1,4 +1,4 @@
-.header{
+.header {
     width: 100%;
     position: fixed;
     top: 0;
@@ -7,7 +7,7 @@
     background-color: var(--cointainer-color);
 }
 
-.nav{
+.nav {
     height: calc(var(--header-height) + 1.5rem);
     display: flex;
     justify-content: space-between;
@@ -19,4 +19,25 @@
 .nav__toogle{
     color: var(--title-color);
     font-weight: var(--font-medium);
+}
+
+.nav__list {
+    display: flex;
+    column-gap: 2rem;
+}
+
+.nav__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: var(--small-font-size);
+    color: var(--title-color);
+    font-weight: var(--font-medium);
+    transition: .3s;
+}
+
+.nav__icon,
+.nav__close,
+.nav__toogle {
+    display: none;
 }
