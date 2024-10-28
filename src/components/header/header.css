@@ -41,3 +41,9 @@
 .nav__toogle {
     display: none;
 }
+
+/* Active link */
+.active-link,
+.nav__link:hover {
+    color: var(--title-color);
+}
