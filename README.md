@@ -1,4 +1,12 @@
-# React + Vite
+# Install ini dulu ngab
+https://youtu.be/xvKe4vFNnVg?si=0jFUlRZFpWO3XuDC
+
+* https://nodejs.org/en
+* https://vite.dev/guide/
+* https://swiperjs.com/get-started
+* https://www.emailjs.com/docs/sdk/installation/
+
+### React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
