@@ -1,13 +1,22 @@
-import React from 'react'
+import React from "react";
+import "./home.css";
+import Social from "./Social";
+import Data from "./Data";
 
 const Home = () => {
   return (
-    <section className="home sectiom" id="home">
-        <div className="home__container container grid">
-            <div className="home__container grid"></div>
-        </div>
-    </section>
-  )
-}
+    <section className="home section" id="home">
+      <div className="home__container container grid">
+        <div className="home__content grid">
+          <Social />
 
-export default Home
+          <div className="home__img"></div>
+
+          <Data />
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Home;

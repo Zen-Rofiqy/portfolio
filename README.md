@@ -1,6 +1,7 @@
 # Install ini dulu ngab
-https://youtu.be/xvKe4vFNnVg?si=0jFUlRZFpWO3XuDC
+https://youtu.be/xvKe4vFNnVg
 
+* https://nodejs.org/en
 * https://vite.dev/guide/
 * https://swiperjs.com/get-started
 * https://www.emailjs.com/docs/sdk/installation/
