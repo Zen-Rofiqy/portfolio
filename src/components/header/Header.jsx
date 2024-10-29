@@ -8,58 +8,58 @@ const Header = () => {
   return (
     <header className='header'>
         <nav className="nav container">
-          <a href="index.html" className="nav_logo">
+          <a href="index.html" className="nav__logo">
             Smith
           </a>
 
           <div className={Toogle ? "nav__menu show-menu" : 
             "nav__menu"}>
-            <ul className="nav_list grid">
+            <ul className="nav__list grid">
 
-              <li className="nav_item">
-                <a href="#home" className="nav_link active-link">
-                  <i className="uil uil-estate nav_icon"></i> Home
+              <li className="nav__item">
+                <a href="#home" className="nav__link active-link">
+                  <i className="uil uil-estate nav__icon"></i> Home
                 </a>
               </li>
 
-              <li className="nav_item">
-                <a href="#about" className="nav_link">
-                  <i className="uil uil-user nav_icon"></i> About
+              <li className="nav__item">
+                <a href="#about" className="nav__link">
+                  <i className="uil uil-user nav__icon"></i> About
                 </a>
               </li>
 
-              <li className="nav_item">
-                <a href="#skills" className="nav_link">
-                  <i className="uil uil-file-alt nav_icon"></i> Skills
+              <li className="nav__item">
+                <a href="#skills" className="nav__link">
+                  <i className="uil uil-file-alt nav__icon"></i> Skills
                 </a>
               </li>
 
-              <li className="nav_item">
-                <a href="#services" className="nav_link">
-                  <i className="uil uil-briefcase-alt nav_icon"></i> Services
+              <li className="nav__item">
+                <a href="#services" className="nav__link">
+                  <i className="uil uil-briefcase-alt nav__icon"></i> Services
                 </a>
               </li>
 
-              <li className="nav_item">
-                <a href="#portfolio" className="nav_link">
-                  <i className="uil uil-scenery nav_icon"></i> Portfolio
+              <li className="nav__item">
+                <a href="#portfolio" className="nav__link">
+                  <i className="uil uil-scenery nav__icon"></i> Portfolio
                 </a>
               </li>
 
-              <li className="nav_item">
-                <a href="#contact" className="nav_link">
-                  <i className="uil uil-message nav_icon"></i> Contact
+              <li className="nav__item">
+                <a href="#contact" className="nav__link">
+                  <i className="uil uil-message nav__icon"></i> Contact
                 </a>
               </li>
             </ul>
 
             <i 
-              class="uil uil-times nav_close" 
+              class="uil uil-times nav__close" 
               onClick={() => showMenu(!Toogle)}
             ></i>
           </div>
 
-          <div className="nav_toogle" onClick={() => showMenu(!Toogle)}>
+          <div className="nav__toogle" onClick={() => showMenu(!Toogle)}>
             <i class="uil uil-apps"></i>
           </div>
         </nav>
