@@ -8,9 +8,7 @@ const Header = () => {
   return (
     <header className='header'>
         <nav className="nav container">
-          <a href="index.html" className="nav__logo">
-            Smith
-          </a>
+          <a href="index.html" className="nav__logo">Zen Rofiqy</a>
 
           <div className={Toogle ? "nav__menu show-menu" : 
             "nav__menu"}>
