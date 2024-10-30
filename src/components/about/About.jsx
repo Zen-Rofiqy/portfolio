@@ -1,6 +1,6 @@
 import React from "react";
 import "./about.css";
-import AboutImg from "../../assets/about.jpg";
+import AboutImg from "../../assets/about.jpeg";
 import CV from "../../assets/My-Cv.pdf";
 import Info from "./Info";
 
@@ -17,15 +17,12 @@ const About = () => {
           <Info />
 
           <p className="about__description">
-            Angga Fathan Rofiqy is a skilled professional in data exploration,
-            design, and structured data visualization.
+            Angga Fathan Rofiqy is a professional in data exploration and design
+            with strong skills in data visualization.
             <br />
             With a background in Statistics and Data Science from Bogor
-            Agricultural University, he has developed machine learning models as
-            a top 10% Machine Learning Cohort at Bangkit Academy in 2024.
-            <br />
-            Angga is proficient in R and Python, combining creativity and
-            analytical skills to deliver structured, impactful work.
+            Agricultural University, he ranked in the top 10% in the Machine
+            Learning Path at Bangkit Academy in 2024.
           </p>
 
           <a download="" href={CV} className="button button--flex">
