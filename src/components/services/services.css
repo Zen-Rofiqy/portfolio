@@ -113,7 +113,7 @@
 }
 
 /* Active Modal */
-.active__modal {
+.active-modal {
   opacity: 1;
   visibility: visible;
 }
