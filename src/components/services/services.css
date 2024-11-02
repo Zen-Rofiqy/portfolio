@@ -54,8 +54,8 @@
   justify-content: center;
   align-items: center;
   padding: 0 1rem;
-  opacity: 1;
-  visibility: visible;
+  opacity: 0;
+  visibility: hidden;
   transition: 0.3s;
 }
 
@@ -106,4 +106,14 @@
 .services__modal-icon {
   color: var(--title-color);
   font-size: 1.1rem;
+}
+
+.services__modal-info {
+  font-size: var(--small-font-size);
+}
+
+/* Active Modal */
+.active__modal {
+  opacity: 1;
+  visibility: visible;
 }
