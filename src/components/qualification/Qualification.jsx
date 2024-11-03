@@ -7,7 +7,7 @@ const Qualification = () => {
       <h2 className="section__title">Qualification</h2>
       <span className="section__subtitle">My personel journey</span>
 
-      <div className="qualification__container cointainer">
+      <div className="qualification__container container">
         <div className="qualification__tabs">
           <div className="qualification__button qualification__active button--flex">
             <i className="uil uil-graduation-cap qualification__icon">
@@ -15,7 +15,7 @@ const Qualification = () => {
             </i>
           </div>
 
-          <div className="qaualification__button button--flex">
+          <div className="qualification__button button--flex">
             <i className="uil uil-briefcase-alt qualification__icon">
               Experience
             </i>
