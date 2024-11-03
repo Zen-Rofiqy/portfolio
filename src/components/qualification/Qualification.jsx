@@ -28,7 +28,7 @@ const Qualification = () => {
                   Statistics & Data Science
                 </h3>
                 <span className="qualification__subtitle">IPB University</span>
-                <div className="qualification__calender">
+                <div className="qualification__calendar">
                   <i className="uil uil-calendar-alt"></i> Aug 2021 - Aug 2025
                 </div>
               </div>
@@ -52,7 +52,7 @@ const Qualification = () => {
                   Machine Learning Cohort
                 </h3>
                 <span className="qualification__subtitle">Bangkit Academy</span>
-                <div className="qualification__calender">
+                <div className="qualification__calendar">
                   <i className="uil uil-calendar-alt"></i> Feb 2024 - Jul 2024
                 </div>
               </div>
@@ -62,7 +62,7 @@ const Qualification = () => {
               <div>
                 <h3 className="qualification__title">Natural Science</h3>
                 <span className="qualification__subtitle">SMAN 1 Cibadak</span>
-                <div className="qualification__calender">
+                <div className="qualification__calendar">
                   <i className="uil uil-calendar-alt"></i> Jan 2018 - Apr 2021
                 </div>
               </div>
@@ -86,7 +86,7 @@ const Qualification = () => {
                 <span className="qualification__subtitle">
                   Institut Pertanian Bogor
                 </span>
-                <div className="qualification__calender">
+                <div className="qualification__calendar">
                   <i className="uil uil-calendar-alt"></i> 2021 - Present
                 </div>
               </div>
@@ -100,7 +100,7 @@ const Qualification = () => {
                 <span className="qualification__subtitle">
                   PT.ASDP Indonesia Ferry (Persero)
                 </span>
-                <div className="qualification__calender">
+                <div className="qualification__calendar">
                   <i className="uil uil-calendar-alt"></i> Sep 2024 - Des 2024
                 </div>
               </div>
@@ -117,7 +117,7 @@ const Qualification = () => {
                   Machine Learning Cohort
                 </h3>
                 <span className="qualification__subtitle">Bangkit Academy</span>
-                <div className="qualification__calender">
+                <div className="qualification__calendar">
                   <i className="uil uil-calendar-alt"></i> Feb 2024 - Jul 2024
                 </div>
               </div>
@@ -141,7 +141,7 @@ const Qualification = () => {
                 <span className="qualification__subtitle">
                   Chess Unity of Agriculture IPB
                 </span>
-                <div className="qualification__calender">
+                <div className="qualification__calendar">
                   <i className="uil uil-calendar-alt"></i> Feb 2023 - Feb 2024
                 </div>
               </div>
@@ -162,7 +162,7 @@ const Qualification = () => {
                 <span className="qualification__subtitle">
                   Big Data Agrotourism PKM-RSH IPB University
                 </span>
-                <div className="qualification__calender">
+                <div className="qualification__calendar">
                   <i className="uil uil-calendar-alt"></i> Jan 2023 - Feb 2024
                 </div>
               </div>
