@@ -40,6 +40,13 @@ const Qualification = () => {
             </div>
 
             <div className="qualification__data">
+              <div></div>
+
+              <div>
+                <span className="qualification__rounder"></span>
+                <span className="qualification__line"></span>
+              </div>
+
               <div>
                 <h3 className="qualification__title">
                   Machine Learning Cohort
@@ -49,26 +56,19 @@ const Qualification = () => {
                   <i className="uil uil-calendar-alt"></i> Feb 2024 - Jul 2024
                 </div>
               </div>
-
-              <div>
-                <span className="qualification__rounder"></span>
-                <span className="qualification__line"></span>
-              </div>
             </div>
 
             <div className="qualification__data">
-              <div></div>
-
-              <div>
-                <span className="qualification__rounder"></span>
-                <span className="qualification__line"></span>
-              </div>
-
               <div>
                 <h3 className="qualification__title">Natural Science</h3>
                 <span className="qualification__subtitle">SMAN 1 Cibadak</span>
                 <div className="qualification__calender">
                   <i className="uil uil-calendar-alt"></i> Jan 2018 - Apr 2021
+                </div>
+
+                <div>
+                  <span className="qualification__rounder"></span>
+                  <span className="qualification__line"></span>
                 </div>
               </div>
             </div>
