@@ -41,7 +41,7 @@ const Qualification = () => {
         </div>
 
         <div className="qualification__sections">
-          <div
+          <div /* Education */
             className={
               toggleState === 1
                 ? "qualification__content qualification__content-active"
@@ -67,24 +67,11 @@ const Qualification = () => {
 
             <div className="qualification__data">
               <div></div>
-
               <div>
                 <span className="qualification__rounder"></span>
                 <span className="qualification__line"></span>
               </div>
 
-              <div>
-                <h3 className="qualification__title">
-                  Machine Learning Cohort
-                </h3>
-                <span className="qualification__subtitle">Bangkit Academy</span>
-                <div className="qualification__calendar">
-                  <i className="uil uil-calendar-alt"></i> Feb 2024 - Jul 2024
-                </div>
-              </div>
-            </div>
-
-            <div className="qualification__data">
               <div>
                 <h3 className="qualification__title">Natural Science</h3>
                 <span className="qualification__subtitle">SMAN 1 Cibadak</span>
@@ -92,34 +79,10 @@ const Qualification = () => {
                   <i className="uil uil-calendar-alt"></i> Jan 2018 - Apr 2021
                 </div>
               </div>
-
-              <div>
-                <span className="qualification__rounder"></span>
-                <span className="qualification__line"></span>
-              </div>
-            </div>
-
-            <div className="qualification__data">
-              <div></div>
-
-              <div>
-                <span className="qualification__rounder"></span>
-                <span className="qualification__line"></span>
-              </div>
-
-              <div>
-                <h3 className="qualification__title">Nah</h3>
-                <span className="qualification__subtitle">
-                  Institut Pertanian Bogor
-                </span>
-                <div className="qualification__calendar">
-                  <i className="uil uil-calendar-alt"></i> 2021 - Present
-                </div>
-              </div>
             </div>
           </div>
 
-          <div
+          <div /* Experience */
             className={
               toggleState === 2
                 ? "qualification__content qualification__content-active"
