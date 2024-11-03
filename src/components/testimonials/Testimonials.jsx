@@ -17,7 +17,24 @@ const Testimonials = () => {
       <h2 className="section__title">My clients say</h2>
       <span className="section__subtitle">Testimonial</span>
 
-      <Swiper className="testimonial__container">
+      <Swiper
+        className="testimonial__container"
+        loop={true}
+        spaceBetween={24}
+        pagination={{
+          clickable: true,
+        }}
+        breakpoints={{
+          576: {
+            slidesPerView: 2,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 48,
+          },
+        }}
+        modules={[Pagination]}
+      >
         {Data.map(({ id, image, title, description }) => {
           return (
             <SwiperSlide className="testimonial__card" key={id}>
