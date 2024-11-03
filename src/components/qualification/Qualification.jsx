@@ -65,11 +65,11 @@ const Qualification = () => {
                 <div className="qualification__calender">
                   <i className="uil uil-calendar-alt"></i> Jan 2018 - Apr 2021
                 </div>
+              </div>
 
-                <div>
-                  <span className="qualification__rounder"></span>
-                  <span className="qualification__line"></span>
-                </div>
+              <div>
+                <span className="qualification__rounder"></span>
+                <span className="qualification__line"></span>
               </div>
             </div>
 
