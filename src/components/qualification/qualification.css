@@ -1,0 +1,9 @@
+.qualification__container {
+  max-width: 768px;
+}
+
+.qualification__tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--mb-2);
+}
