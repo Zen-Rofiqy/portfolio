@@ -2,7 +2,7 @@
   grid-template-columns: repeat(2, max-content);
   justify-content: center;
   column-gap: 6rem;
-  padding-bottom: 3rem;
+  padding-bottom: 1rem;
 }
 
 .contact__title {
@@ -64,7 +64,7 @@
   transform: translate(0.25rem);
 }
 
-.conctact__form {
+.contact__form {
   width: 360px;
 }
 
