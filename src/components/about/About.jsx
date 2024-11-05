@@ -17,12 +17,12 @@ const About = () => {
           <Info />
 
           <p className="about__description">
-            Angga Fathan Rofiqy is a professional in data exploration and design
-            with strong skills in data visualization.
-            <br />
-            With a background in Statistics and Data Science from Bogor
-            Agricultural University, he ranked in the top 10% in the Machine
-            Learning Path at Bangkit Academy in 2024.
+            Angga Fathan Rofiqy is a data science student specializing in
+            machine learning and statistical analysis. With a foundation in
+            Statistics from Bogor Agricultural University, he ranked in the top
+            10% of Bangkit Academy 2024's Machine Learning Path. Angga combines
+            technical skills with systematic thinking to deliver efficient,
+            data-driven solutions.
           </p>
 
           <a download="" href={CV} className="button button--flex">
