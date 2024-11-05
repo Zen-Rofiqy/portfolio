@@ -55,7 +55,7 @@ const Data = () => {
           ></path>
         </svg>
       </h1>
-      <h3 className="home__subtitle">Data Enthusiast</h3>
+      <h3 className="home__subtitle">Data Science Enthusiast & Analyst</h3>
       <p className="home__description">
         I'm a Data Science enthusiast skilled in R, Python, SAS, and SQL, eager
         to collaborate on ML and data projects.
