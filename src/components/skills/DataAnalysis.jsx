@@ -8,7 +8,7 @@ const DataAnalysis = () => {
       <div className="skills__box">
         <div className="skills__group">
           <div className="skills__data">
-            <i class="bx bx-badge-check"></i>
+            <i class="bx bxs-spreadsheet"></i>
 
             <div>
               <h3 className="skills__name">Microsoft Excel</h3>
@@ -17,7 +17,7 @@ const DataAnalysis = () => {
           </div>
 
           <div className="skills__data">
-            <i class="bx bx-badge-check"></i>
+            <i class="bx bx-bar-chart-square"></i>
 
             <div>
               <h3 className="skills__name">Minitab</h3>
