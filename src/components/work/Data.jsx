@@ -24,19 +24,19 @@ export const projectsData = [
   {
     id: 2,
     image: Work2,
-    title: "App movil",
+    title: "Works of KKNT IPB",
     category: "app",
   },
   {
     id: 3,
     image: Work3,
-    title: "Brand design",
+    title: "Tancap App - Bangkit Academy",
     category: "design",
   },
   {
     id: 4,
     image: Work4,
-    title: "App movil",
+    title: "Works of PKM RSH",
     category: "app",
   },
   {
