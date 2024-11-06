@@ -1,7 +1,7 @@
 import React from "react";
 import "./skills.css";
 import Frontend from "./Frontend";
-import Backend from "./Backend";
+import Design from "./Design";
 import DataScience from "./DataScience";
 import DataAnalysis from "./DataAnalysis";
 import DataViz from "./DataViz";
@@ -18,8 +18,8 @@ const Skills = () => {
         <DataAnalysis />
         <DataViz />
         <Database />
+        <Design />
         <Frontend />
-        <Backend />
       </div>
     </section>
   );
