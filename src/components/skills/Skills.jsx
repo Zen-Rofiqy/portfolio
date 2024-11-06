@@ -5,6 +5,7 @@ import Backend from "./Backend";
 import DataScience from "./DataScience";
 import DataAnalysis from "./DataAnalysis";
 import DataViz from "./DataViz";
+import Database from "./Database";
 
 const Skills = () => {
   return (
@@ -16,6 +17,7 @@ const Skills = () => {
         <DataScience />
         <DataAnalysis />
         <DataViz />
+        <Database />
         <Frontend />
         <Backend />
       </div>
