@@ -80,6 +80,37 @@ const Qualification = () => {
                 </div>
               </div>
             </div>
+
+            <div className="qualification__data">
+              <div>
+                <h3 className="qualification__title">Middle School</h3>
+                <span className="qualification__subtitle">SMPIT Al-Ummah</span>
+                <div className="qualification__calendar">
+                  <i className="uil uil-calendar-alt"></i> Aug 2015 - Aug 2018
+                </div>
+              </div>
+
+              <div>
+                <span className="qualification__rounder"></span>
+                <span className="qualification__line"></span>
+              </div>
+            </div>
+
+            <div className="qualification__data">
+              <div></div>
+              <div>
+                <span className="qualification__rounder"></span>
+                <span className="qualification__line"></span>
+              </div>
+
+              <div>
+                <h3 className="qualification__title">Elementary School</h3>
+                <span className="qualification__subtitle">SDN 2 Cibadak</span>
+                <div className="qualification__calendar">
+                  <i className="uil uil-calendar-alt"></i> Jan 2009 - Apr 2015
+                </div>
+              </div>
+            </div>
           </div>
 
           <div /* Experience */
