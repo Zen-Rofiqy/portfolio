@@ -4,6 +4,7 @@ import Frontend from "./Frontend";
 import Backend from "./Backend";
 import DataScience from "./DataScience";
 import DataAnalysis from "./DataAnalysis";
+import DataViz from "./DataViz";
 
 const Skills = () => {
   return (
@@ -14,6 +15,7 @@ const Skills = () => {
       <div className="skills__container container grid">
         <DataScience />
         <DataAnalysis />
+        <DataViz />
         <Frontend />
         <Backend />
       </div>
