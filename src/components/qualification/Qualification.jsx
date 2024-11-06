@@ -114,6 +114,39 @@ const Qualification = () => {
                 <span className="qualification__line"></span>
               </div>
               <div>
+                <h3 className="qualification__title">Surveyor</h3>
+                <span className="qualification__subtitle">IPB University</span>
+                <div className="qualification__calendar">
+                  <i className="uil uil-calendar-alt"></i> Aug 2024
+                </div>
+              </div>
+            </div>
+
+            <div className="qualification__data">
+              <div>
+                <h3 className="qualification__title">Media and Branding</h3>
+                <span className="qualification__subtitle">
+                  KKN-T IPB 2024 | Sukawening Village
+                </span>
+                <div className="qualification__calendar">
+                  <i className="uil uil-calendar-alt"></i> Jun 2024 - Aug 2024
+                </div>
+              </div>
+              <div>
+                <span className="qualification__rounder"></span>
+                <span className="qualification__line"></span>
+              </div>
+            </div>
+
+            <div className="qualification__data">
+              <div></div>
+
+              <div>
+                <span className="qualification__rounder"></span>
+                <span className="qualification__line"></span>
+              </div>
+
+              <div>
                 <h3 className="qualification__title">
                   Machine Learning Cohort
                 </h3>
@@ -137,27 +170,6 @@ const Qualification = () => {
               <div>
                 <span className="qualification__rounder"></span>
                 <span className="qualification__line"></span>
-              </div>
-            </div>
-
-            <div className="qualification__data">
-              <div></div>
-
-              <div>
-                <span className="qualification__rounder"></span>
-                <span className="qualification__line"></span>
-              </div>
-
-              <div>
-                <h3 className="qualification__title">
-                  Graphic Designer and Data Analyst
-                </h3>
-                <span className="qualification__subtitle">
-                  Big Data Agrotourism PKM-RSH IPB University
-                </span>
-                <div className="qualification__calendar">
-                  <i className="uil uil-calendar-alt"></i> Jan 2023 - Feb 2024
-                </div>
               </div>
             </div>
           </div>
