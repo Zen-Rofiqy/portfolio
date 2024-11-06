@@ -145,7 +145,9 @@ const Qualification = () => {
                 <span className="qualification__line"></span>
               </div>
               <div>
-                <h3 className="qualification__title">Surveyor</h3>
+                <h3 className="qualification__title">
+                  Surveyor <br /> IPM Bandung
+                </h3>
                 <span className="qualification__subtitle">IPB University</span>
                 <div className="qualification__calendar">
                   <i className="uil uil-calendar-alt"></i> Aug 2024

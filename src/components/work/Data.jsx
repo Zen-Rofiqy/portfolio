@@ -8,8 +8,8 @@ export const projectsData = [
   {
     id: 1,
     image: Work1,
-    title: "Web design",
-    category: "web",
+    title: "Surveyor - IPM Bandung",
+    category: "statistics",
   },
   {
     id: 2,
@@ -42,7 +42,7 @@ export const projectsNav = [
     name: "all",
   },
   {
-    name: "web",
+    name: "statistics",
   },
   {
     name: "app",
