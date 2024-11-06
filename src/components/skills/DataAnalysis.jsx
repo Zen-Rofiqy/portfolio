@@ -1,9 +1,9 @@
 import React from "react";
 
-const DataScience = () => {
+const DataAnalysis = () => {
   return (
     <div className="skills__content">
-      <h3 className="skills__title">Data Science</h3>
+      <h3 className="skills__title">Data Analysis</h3>
 
       <div className="skills__box">
         <div className="skills__group">
@@ -11,7 +11,7 @@ const DataScience = () => {
             <i class="bx bx-badge-check"></i>
 
             <div>
-              <h3 className="skills__name">Python</h3>
+              <h3 className="skills__name">Microsoft Excel</h3>
               <span className="skills__level">Advanced</span>
             </div>
           </div>
@@ -20,8 +20,8 @@ const DataScience = () => {
             <i class="bx bx-badge-check"></i>
 
             <div>
-              <h3 className="skills__name">Machine Learning</h3>
-              <span className="skills__level">Intermediate</span>
+              <h3 className="skills__name">Minitab</h3>
+              <span className="skills__level">Basic</span>
             </div>
           </div>
         </div>
@@ -31,8 +31,8 @@ const DataScience = () => {
             <i class="bx bx-badge-check"></i>
 
             <div>
-              <h3 className="skills__name">R</h3>
-              <span className="skills__level">Advanced</span>
+              <h3 className="skills__name">SPSS</h3>
+              <span className="skills__level">Basic</span>
             </div>
           </div>
 
@@ -40,7 +40,7 @@ const DataScience = () => {
             <i class="bx bx-badge-check"></i>
 
             <div>
-              <h3 className="skills__name">SAS</h3>
+              <h3 className="skills__name">SmartPLS</h3>
               <span className="skills__level">Basic</span>
             </div>
           </div>
@@ -50,4 +50,4 @@ const DataScience = () => {
   );
 };
 
-export default DataScience;
+export default DataAnalysis;
