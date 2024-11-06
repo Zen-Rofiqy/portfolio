@@ -172,6 +172,84 @@ const Qualification = () => {
                 <span className="qualification__line"></span>
               </div>
             </div>
+
+            <div className="qualification__data">
+              <div></div>
+
+              <div>
+                <span className="qualification__rounder"></span>
+                <span className="qualification__line"></span>
+              </div>
+
+              <div>
+                <h3 className="qualification__title">
+                  Graphic Designer and Data Analyst
+                </h3>
+                <span className="qualification__subtitle">
+                  Big Data Agrotourism PKM-RSH IPB University
+                </span>
+                <div className="qualification__calendar">
+                  <i className="uil uil-calendar-alt"></i> Jan 2023 - Feb 2024
+                </div>
+              </div>
+            </div>
+
+            <div className="qualification__data">
+              <div>
+                <h3 className="qualification__title">
+                  Staff of Documentation Decoration Design division
+                </h3>
+                <span className="qualification__subtitle">
+                  PORSTAT IPB 2022
+                </span>
+                <div className="qualification__calendar">
+                  <i className="uil uil-calendar-alt"></i> Nov 2022 - Feb 2023
+                </div>
+              </div>
+              <div>
+                <span className="qualification__rounder"></span>
+                <span className="qualification__line"></span>
+              </div>
+            </div>
+
+            <div className="qualification__data">
+              <div></div>
+
+              <div>
+                <span className="qualification__rounder"></span>
+                <span className="qualification__line"></span>
+              </div>
+
+              <div>
+                <h3 className="qualification__title">
+                  Media Branding Department
+                </h3>
+                <span className="qualification__subtitle">
+                  Gamma Sigma Beta IPB
+                </span>
+                <div className="qualification__calendar">
+                  <i className="uil uil-calendar-alt"></i> Sep 2022 - Dec 2022
+                </div>
+              </div>
+            </div>
+
+            <div className="qualification__data">
+              <div>
+                <h3 className="qualification__title">
+                  Staff of Branding Decor Design Division
+                </h3>
+                <span className="qualification__subtitle">
+                  SPIRIT FMIPA IPB
+                </span>
+                <div className="qualification__calendar">
+                  <i className="uil uil-calendar-alt"></i> Mar 2022 - Sep 2022
+                </div>
+              </div>
+              <div>
+                <span className="qualification__rounder"></span>
+                <span className="qualification__line"></span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
