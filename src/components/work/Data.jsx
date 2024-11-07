@@ -25,55 +25,55 @@ export const projectsData = [
     id: 2,
     image: Work2,
     title: "Works of KKNT IPB",
-    category: "app",
+    category: "statistics",
   },
   {
     id: 3,
     image: Work3,
     title: "Tancap App - Bangkit Academy",
-    category: "design",
+    category: "machine learning",
   },
   {
     id: 4,
     image: Work4,
     title: "Works of PKM RSH",
-    category: "app",
+    category: "statistics",
   },
   {
     id: 5,
     image: Work5,
     title: "Porstat 2022 Instagram Feeds",
-    category: "web",
+    category: "design",
   },
   {
     id: 6,
     image: Work6,
     title: "Spirit FMIPA 2022 Instagram Feeds",
-    category: "statistics",
+    category: "design",
   },
   {
     id: 7,
     image: Work7,
     title: "Bayesian Neural Network",
-    category: "app",
+    category: "machine learning",
   },
   {
     id: 8,
     image: Work8,
     title: "Clustering: K-Means, FCM, and GMM",
-    category: "design",
+    category: "statistics",
   },
   {
     id: 9,
     image: Work9,
     title: "Data Challenge Final Project",
-    category: "app",
+    category: "statistics",
   },
   {
     id: 10,
     image: Work10,
     title: "ARCH-GARCH Forecasting",
-    category: "web",
+    category: "statistics",
   },
   {
     id: 11,
@@ -85,7 +85,7 @@ export const projectsData = [
     id: 12,
     image: Work12,
     title: "Clusering: Gaussian Mixture Model",
-    category: "app",
+    category: "statistics",
   },
   {
     id: 13,
@@ -97,13 +97,13 @@ export const projectsData = [
     id: 14,
     image: Work14,
     title: "IPB Statistics Jersey",
-    category: "app",
+    category: "design",
   },
   {
     id: 15,
     image: Work15,
     title: "IPB Statistics T-shirt",
-    category: "web",
+    category: "design",
   },
 ];
 
@@ -115,7 +115,7 @@ export const projectsNav = [
     name: "statistics",
   },
   {
-    name: "app",
+    name: "machine learning",
   },
   {
     name: "design",
