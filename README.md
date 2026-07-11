@@ -52,18 +52,21 @@ git push
 
 ## 3. Peta konten — mau ubah apa, edit di mana
 
-| Bagian | Lokasi file |
-|--------|-------------|
-| Projek / karya | **Google Sheet** (lihat bagian 6) + gambar `public/portfolio/<slug>/cover.jpg` |
-| Testimoni | `src/components/testimonials/Data.jsx` + `src/assets/testimonial*.png` |
-| Home / intro | `src/components/home/` |
-| About | `src/components/about/` + `src/assets/about.jpeg` |
+| Bagian | Lokasi |
+|--------|--------|
+| Projek / karya | **Google Sheet** tab `Portfolio` + gambar `public/portfolio/<slug>/cover.jpg` |
+| Teks Home & About (subjudul, deskripsi, angka pengalaman) | **Google Sheet** tab `Teks` |
+| Qualification / pengalaman | **Google Sheet** tab `Kualifikasi` |
+| Testimoni | **Google Sheet** tab `Testimoni` + foto `public/testimonials/` |
+| Services | **Google Sheet** tab `Services` |
 | Skills | `src/components/skills/` |
-| Qualification / pengalaman | `src/components/qualification/Qualification.jsx` |
-| Services | `src/components/services/Services.jsx` |
 | Kontak (form) | `src/components/contact/Contact.jsx` |
 | CV (file PDF) | `src/assets/CV_*.pdf` |
 | Foto profil | `src/assets/profile-1.jpeg` |
+| Foto About | `src/assets/about.jpeg` |
+
+> Semua yang bertanda **Google Sheet** diedit langsung dari Sheet — lihat bagian 6.
+> Yang lain tetap diedit di file, lalu commit + push.
 
 > Ganti gambar: taruh file di `src/assets/`, lalu sesuaikan `import` di komponen terkait.
 > Jangan lupa nama file rapi (hindari ekstensi ganda seperti `.jpg.jpeg`).
@@ -81,28 +84,53 @@ git push
 
 ---
 
-## 6. Portfolio via Google Sheet
+## 6. Konten via Google Sheet
 
-Bagian **Portfolio** dikendalikan dari Google Sheet — teks, urutan, dan tampil/sembunyi
-kartu bisa Anda ubah dari mana saja (termasuk HP) **tanpa push & tanpa terminal**.
-Gambar tetap di repo (`public/portfolio/`), jadi aman & cepat.
+Hampir semua **teks konten** situs dikendalikan dari **satu Google Sheet** dengan
+beberapa tab — bisa diubah dari mana saja (termasuk HP) **tanpa push & tanpa terminal**:
+
+| Tab Sheet | Mengendalikan |
+|-----------|---------------|
+| `Portfolio` | Kartu projek: judul, kategori, urutan, tampil/sembunyi, link |
+| `Teks` | Teks tunggal: subjudul & deskripsi Home, deskripsi & angka-angka About |
+| `Kualifikasi` | Timeline Education & Experience |
+| `Testimoni` | Nama, isi testimoni, foto |
+| `Services` | Kartu layanan: judul, deskripsi, daftar poin, ikon |
+
+Gambar tetap di repo (`public/portfolio/`, `public/testimonials/`), jadi aman & cepat.
+Konfigurasi `SHEET_ID` ada di [src/lib/sheet.js](src/lib/sheet.js).
+
+> Perubahan di Sheet muncul di situs dengan jeda ±5 menit (cache Google). Wajar.
+> Kalau `SHEET_ID` dikosongkan, satu tab dihapus, atau Google tak bisa diakses,
+> situs otomatis pakai data cadangan di kode — tidak pernah blank.
 
 ### Setup sekali (aktifkan Sheet)
 
-1. Buka [portfolio-sheet-template.csv](portfolio-sheet-template.csv) → buat Google Sheet
-   baru → `File > Import > Upload` file itu → **Replace current sheet**.
-2. Ganti nama tab (di kiri bawah) menjadi **`Portfolio`** (harus persis).
-3. Ubah kolom **Tampilkan** jadi checkbox: pilih kolomnya → `Insert > Checkbox`.
-4. `Share` → **Anyone with the link: Viewer**.
-5. Salin **ID** dari URL sheet: `docs.google.com/spreadsheets/d/`**`<ID INI>`**`/edit`
-   → tempel ke `SHEET_ID` di [src/components/work/Data.jsx](src/components/work/Data.jsx),
+1. Buat Google Sheet baru, lalu import tiap file template di bawah:
+   `File > Import > Upload` → **Insert new sheet(s)** (sekali import satu file).
+   Ganti nama tiap tab (klik kanan tab di kiri bawah) **persis** seperti ini:
+
+   | File template | Nama tab |
+   |---------------|----------|
+   | [portfolio-sheet-template.csv](portfolio-sheet-template.csv) | `Portfolio` |
+   | [sheet-template-teks.csv](sheet-template-teks.csv) | `Teks` |
+   | [sheet-template-kualifikasi.csv](sheet-template-kualifikasi.csv) | `Kualifikasi` |
+   | [sheet-template-testimoni.csv](sheet-template-testimoni.csv) | `Testimoni` |
+   | [sheet-template-services.csv](sheet-template-services.csv) | `Services` |
+
+2. Ubah kolom **Tampilkan** jadi checkbox: pilih kolomnya → `Insert > Checkbox`
+   (di semua tab yang punya kolom itu).
+3. `Share` → **Anyone with the link: Viewer**.
+4. Salin **ID** dari URL sheet: `docs.google.com/spreadsheets/d/`**`<ID INI>`**`/edit`
+   → tempel ke `SHEET_ID` di [src/lib/sheet.js](src/lib/sheet.js),
    lalu commit + push sekali. Setelah ini konten cukup diedit dari Sheet.
 
-> Perubahan di Sheet muncul di situs dengan jeda ±5 menit (cache Google). Wajar.
-> Kalau `SHEET_ID` dikosongkan atau Google tak bisa diakses, situs otomatis pakai
-> data cadangan di `Data.jsx` — tidak pernah blank.
+> Kalau Sheet lama (tab `Portfolio`) sudah jalan, cukup lakukan langkah 1–2 untuk
+> tab-tab baru di Sheet yang sama — `SHEET_ID` tidak berubah.
 
-### Kolom Sheet
+### Kolom per tab
+
+**`Portfolio`**
 
 | Kolom | Isi |
 |-------|-----|
@@ -113,13 +141,61 @@ Gambar tetap di repo (`public/portfolio/`), jadi aman & cepat.
 | Urutan | Angka urutan tampil (kecil = duluan) |
 | Link | (Opsional) URL tujuan tombol "Details" |
 
-### Menambah proyek baru
+**`Teks`** — format kunci–nilai
+
+| Kolom | Isi |
+|-------|-----|
+| Kunci | Jangan diubah — pengenal teks di kode (mis. `home_subjudul`) |
+| Teks | Isi teks yang tampil di situs — **ini yang Anda edit** |
+| Keterangan | Catatan bebas untuk Anda sendiri, tidak dibaca situs |
+
+Kunci yang tersedia: `home_subjudul`, `home_deskripsi`, `about_deskripsi`,
+`about_pengalaman`, `about_proyek`, `about_support`.
+
+**`Kualifikasi`**
+
+| Kolom | Isi |
+|-------|-----|
+| Tampilkan | Checkbox tampil/sembunyi |
+| Tab | `Education` atau `Experience` |
+| Judul | Nama jurusan / posisi |
+| Institusi | Nama sekolah / organisasi / perusahaan |
+| Periode | Teks bebas, mis. `Aug 2021 - Aug 2025` |
+| Urutan | Urutan dalam tab-nya (kecil = paling atas) |
+
+**`Testimoni`**
+
+| Kolom | Isi |
+|-------|-----|
+| Tampilkan | Checkbox tampil/sembunyi |
+| Nama | Nama pemberi testimoni |
+| Deskripsi | Isi testimoni |
+| Foto | Nama file di `public/testimonials/`, mis. `testimonial1.png` |
+| Urutan | Urutan slide (kecil = duluan) |
+
+**`Services`**
+
+| Kolom | Isi |
+|-------|-----|
+| Tampilkan | Checkbox tampil/sembunyi |
+| Judul | Judul kartu. Untuk 2 baris, tekan **Alt+Enter** di dalam sel |
+| Deskripsi | Paragraf di modal "View More" |
+| Poin | Daftar layanan, **satu poin per baris** dalam satu sel (Alt+Enter) |
+| Ikon | (Opsional) nama ikon [Unicons](https://iconscout.com/unicons), mis. `uil-web-grid` |
+| Urutan | Urutan kartu (kecil = duluan) |
+
+### Menambah proyek baru (Portfolio)
 
 1. Buat folder `public/portfolio/<slug-baru>/` dan taruh **`cover.jpg`** di dalamnya
    (boleh juga `01.jpg`, `02.jpg`, … untuk galeri Details nanti). Commit + push.
-2. Tambah 1 baris di Sheet: centang Tampilkan, isi Judul/Kategori/`Folder` = slug tadi/Urutan.
+2. Tambah 1 baris di tab `Portfolio`: centang Tampilkan, isi Judul/Kategori/`Folder` = slug tadi/Urutan.
 
 > Filter kategori (All/Statistics/…) muncul otomatis dari data — tak perlu edit kode.
+
+### Menambah foto testimoni baru
+
+Taruh file foto di `public/testimonials/` (commit + push sekali), lalu tulis nama
+filenya di kolom `Foto` tab `Testimoni`.
 
 ## 7. Referensi
 

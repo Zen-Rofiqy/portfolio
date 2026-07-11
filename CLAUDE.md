@@ -14,10 +14,13 @@ Detail lengkap ada di [README.md](README.md) — baca itu dulu untuk alur setup,
 
 - Setup awal komputer baru: `./setup.ps1` (install Node via winget → `npm install`).
 - Preview lokal: `npm run dev` (http://localhost:5173).
-- Konten biasanya diedit di file `src/components/*/Data.jsx` + gambar di `src/assets/`.
-- **Bagian Portfolio (Work) kini digerakkan Google Sheet**, bukan file: teks/urutan/tampil-sembunyi
-  diedit dari Sheet (kolom `Tampilkan` = checkbox). Gambar cover ada di `public/portfolio/<slug>/cover.jpg`.
-  `SHEET_ID` & data cadangan ada di `src/components/work/Data.jsx`. Detail di README bagian 6.
+- **Hampir semua teks konten digerakkan Google Sheet** (satu spreadsheet, banyak tab):
+  `Portfolio`, `Teks` (Home/About), `Kualifikasi`, `Testimoni`, `Services` — diedit dari
+  Sheet, bukan file. `SHEET_ID` + utilitas fetch ada di `src/lib/sheet.js`; tiap section
+  punya data cadangan di kode (dipakai kalau Sheet tak terjangkau) yang sebaiknya ikut
+  disinkronkan saat konten berubah permanen. Detail kolom per tab di README bagian 6.
+- Konten yang tidak lewat Sheet (Skills, Contact, dll) diedit di file komponen + gambar
+  di `src/assets/`. Foto testimoni di `public/testimonials/` (dirujuk kolom `Foto` di Sheet).
 - Deploy = commit + push ke `main` (bukan perintah Vercel manual).
 
 ## Konvensi kerja
