@@ -15,6 +15,9 @@ Detail lengkap ada di [README.md](README.md) — baca itu dulu untuk alur setup,
 - Setup awal komputer baru: `./setup.ps1` (install Node via winget → `npm install`).
 - Preview lokal: `npm run dev` (http://localhost:5173).
 - Konten biasanya diedit di file `src/components/*/Data.jsx` + gambar di `src/assets/`.
+- **Bagian Portfolio (Work) kini digerakkan Google Sheet**, bukan file: teks/urutan/tampil-sembunyi
+  diedit dari Sheet (kolom `Tampilkan` = checkbox). Gambar cover ada di `public/portfolio/<slug>/cover.jpg`.
+  `SHEET_ID` & data cadangan ada di `src/components/work/Data.jsx`. Detail di README bagian 6.
 - Deploy = commit + push ke `main` (bukan perintah Vercel manual).
 
 ## Konvensi kerja
@@ -25,6 +28,8 @@ Detail lengkap ada di [README.md](README.md) — baca itu dulu untuk alur setup,
 - **Sebelum push**, jalankan `npm run build` untuk memastikan tidak ada error build.
 - **Aset:** taruh gambar/PDF baru di `src/assets/`, lalu sesuaikan `import` di komponen.
   Hindari nama file dengan ekstensi ganda (mis. `.jpg.jpeg`).
+  Khusus gambar Portfolio: taruh di `public/portfolio/<slug>/` (cover wajib `cover.jpg`),
+  tidak perlu `import` — dirujuk lewat kolom `Folder` di Sheet.
 
 ## Lingkungan
 
