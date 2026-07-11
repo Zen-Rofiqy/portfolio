@@ -18,6 +18,10 @@
 .home__social-icon {
   font-size: 1.25rem;
   color: var(--tile-color);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
 }
 
 .home__social-icon:hover {

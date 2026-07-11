@@ -1,9 +1,12 @@
 import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import "./contact.css";
+import { useContacts } from "./Data";
+import { SocialIcon } from "../../lib/socials";
 
 const Contact = () => {
   const form = useRef();
+  const contacts = useContacts();
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -24,49 +27,24 @@ const Contact = () => {
           <h3 className="contact__title">Talk to me</h3>
 
           <div className="contact__info">
-            <div className="contact__card">
-              <i className="bx bx-mail-send contact__card-icon"></i>
+            {contacts.map((c) => (
+              <div className="contact__card" key={c.title}>
+                <SocialIcon icon={c.icon} className="contact__card-icon" />
 
-              <h3 className="contact__card-title">Email</h3>
-              <span className="contact__card-data">
-                fathan.rofiqy@gmail.com
-              </span>
+                <h3 className="contact__card-title">{c.title}</h3>
+                <span className="contact__card-data">{c.data}</span>
 
-              <a
-                href="mailto:fathan.rofiqy@gmail.com.com"
-                className="contact__button"
-              >
-                Write me
-                <i className="bx bx-right-arrow-alt contact__button-icon"></i>
-              </a>
-            </div>
-
-            <div className="contact__card">
-              <i className="bx bxl-whatsapp contact__card-icon"></i>
-
-              <h3 className="contact__card-title">Whatsapp</h3>
-              <span className="contact__card-data">+62 812-1091-7432</span>
-
-              <a href="https://wa.me/6281210917432" className="contact__button">
-                Write me
-                <i className="bx bx-right-arrow-alt contact__button-icon"></i>
-              </a>
-            </div>
-
-            <div className="contact__card">
-              <i className="bx bxl-instagram contact__card-icon"></i>
-
-              <h3 className="contact__card-title">Instagram</h3>
-              <span className="contact__card-data">@function_runing</span>
-
-              <a
-                href="https://www.instagram.com/function_runing/"
-                className="contact__button"
-              >
-                Write me
-                <i className="bx bx-right-arrow-alt contact__button-icon"></i>
-              </a>
-            </div>
+                <a
+                  href={c.link}
+                  className="contact__button"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Write me
+                  <i className="bx bx-right-arrow-alt contact__button-icon"></i>
+                </a>
+              </div>
+            ))}
           </div>
         </div>
 

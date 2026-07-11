@@ -1,0 +1,17 @@
+/* Ikon sosial berbasis GAMBAR (SVG/PNG di folder public/social/).
+   Dipakai untuk logo yang tidak ada di font ikon (Tableau, Kaggle, RPubs).
+   Dirender sebagai "mask" supaya ikut WARNA & UKURAN seperti ikon font —
+   mewarisi color & font-size dari elemen induknya (samping/footer/kontak). */
+.social__img-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  vertical-align: -0.125em;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}

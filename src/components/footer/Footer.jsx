@@ -1,7 +1,10 @@
 import React from "react";
 import "./footer.css";
+import { useSocials, inFooter, SocialIcon } from "../../lib/socials";
 
 const Footer = () => {
+  const socials = useSocials().filter(inFooter);
+
   return (
     <footer className="footer">
       <div className="footer__container container">
@@ -28,21 +31,19 @@ const Footer = () => {
         </ul>
 
         <div className="footer__social">
-          <a
-            href="https://x.com/f_rofiqy"
-            className="footer__social-link"
-            target="_blank"
-          >
-            <i class="bx bxl-twitter"></i>
-          </a>
-
-          <a
-            href="https://www.instagram.com/function_runing/"
-            className="footer__social-link"
-            target="_blank"
-          >
-            <i class="bx bxl-instagram"></i>
-          </a>
+          {socials.map((s) => (
+            <a
+              key={s.name + s.link}
+              href={s.link}
+              className="footer__social-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              title={s.name}
+              aria-label={s.name}
+            >
+              <SocialIcon icon={s.icon} />
+            </a>
+          ))}
         </div>
 
         <span className="footer__copy">

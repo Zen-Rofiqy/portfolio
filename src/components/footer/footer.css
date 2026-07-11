@@ -41,6 +41,15 @@
   padding: 0.4rem;
   border-radius: 0.5rem;
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.footer__social-link i,
+.footer__social-link .social__img-icon {
+  display: block;
+  line-height: 1;
 }
 
 .footer__social-link:hover {

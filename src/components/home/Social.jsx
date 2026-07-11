@@ -1,31 +1,24 @@
 import React from "react";
+import { useSocials, inSide, SocialIcon } from "../../lib/socials";
 
 const Social = () => {
+  const socials = useSocials().filter(inSide);
+
   return (
     <div className="home__social">
-      <a
-        href="https://www.instagram.com/function_runing/"
-        className="home__social-icon"
-        target="_blank"
-      >
-        <i class="uil uil-instagram"></i>
-      </a>
-
-      <a
-        href="https://www.linkedin.com/in/angga-fathan-rofiqy/"
-        className="home__social-icon"
-        target="_blank"
-      >
-        <i class="uil uil-linkedin"></i>
-      </a>
-
-      <a
-        href="https://github.com/Zen-Rofiqy"
-        className="home__social-icon"
-        target="_blank"
-      >
-        <i class="uil uil-github-alt"></i>
-      </a>
+      {socials.map((s) => (
+        <a
+          key={s.name + s.link}
+          href={s.link}
+          className="home__social-icon"
+          target="_blank"
+          rel="noopener noreferrer"
+          title={s.name}
+          aria-label={s.name}
+        >
+          <SocialIcon icon={s.icon} />
+        </a>
+      ))}
     </div>
   );
 };
