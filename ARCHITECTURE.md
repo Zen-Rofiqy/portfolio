@@ -15,9 +15,12 @@ Urutan komponen di `App.jsx` = urutan section dari atas ke bawah di web.
 
 ## Pohon render
 
+Urutan node = urutan section di `App.jsx` = urutan tampil di halaman (atas ke bawah).
+
 ```mermaid
 graph LR
   main["main.jsx<br/>(entry point)"] --> App["App.jsx<br/>(rangkai semua section)"]
+
   App --> Header
   App --> Home
   App --> About
@@ -30,19 +33,36 @@ graph LR
   App --> Footer
   App --> ScrollUp
 
-  Home -. berisi .-> HomeSub["Data.jsx · Social.jsx · ScrollDown.jsx"]
-  About -. berisi .-> AboutSub["Info.jsx"]
-  Skills -. berisi .-> SkillsSub["Frontend · Database · Design<br/>DataAnalysis · DataScience · DataViz"]
-  Work -. berisi .-> WorkSub["Works.jsx · WorkItems.jsx"]
-  Testimonials -. berisi .-> TestiSub["Data.jsx"]
-
-  Home & About & Services & Qualification & Work & Testimonials -. "fetch runtime<br/>(fallback di Data.jsx masing-masing)" .-> Lib["src/lib/sheet.js<br/>(SHEET_ID + fetch CSV)"]
-  Lib -. tab Portfolio · Teks · Kualifikasi<br/>· Testimoni · Services .-> Sheet["Google Sheet<br/>(data live)"]
+  Home --> HomeSub["Data.jsx · Social.jsx · ScrollDown.jsx"]
+  About --> AboutSub["Info.jsx"]
+  Skills --> SkillsSub["Frontend · Database · Design<br/>DataAnalysis · DataScience · DataViz"]
+  Work --> WorkSub["Works.jsx · WorkItems.jsx"]
+  Testimonials --> TestiSub["Data.jsx"]
 
   classDef sub fill:#eee,stroke:#bbb,color:#333,font-size:11px;
+  class HomeSub,AboutSub,SkillsSub,WorkSub,TestiSub sub;
+```
+
+## Alur data (Google Sheet)
+
+6 dari 11 section ambil konten dari Google Sheet lewat `src/lib/sheet.js` saat runtime;
+kalau fetch gagal, tiap section jatuh ke `Data.jsx`/fallback bawaannya sendiri.
+
+```mermaid
+graph LR
+  Sheet["Google Sheet<br/>(data live)"] -->|"tab Teks · Portfolio · Kualifikasi<br/>Testimoni · Services"| Lib["src/lib/sheet.js<br/>(SHEET_ID + fetch CSV)"]
+
+  Lib --> Home
+  Lib --> About
+  Lib --> Services
+  Lib --> Qualification
+  Lib --> Work
+  Lib --> Testimonials
+
   classDef ext fill:#d9ead3,stroke:#93c47d,color:#274e13,font-size:11px;
-  class HomeSub,AboutSub,SkillsSub,WorkSub,TestiSub,Lib sub;
+  classDef sub fill:#eee,stroke:#bbb,color:#333,font-size:11px;
   class Sheet ext;
+  class Lib sub;
 ```
 
 ## Mana yang punya data konten terpisah
