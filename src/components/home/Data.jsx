@@ -1,6 +1,9 @@
 import React from "react";
+import { useTexts } from "../../lib/texts";
 
 const Data = () => {
+  const t = useTexts();
+
   return (
     <div className="home__data">
       <h1 className="home__title">
@@ -55,11 +58,8 @@ const Data = () => {
           ></path>
         </svg>
       </h1>
-      <h3 className="home__subtitle">Data Science Enthusiast & Analyst</h3>
-      <p className="home__description">
-        I'm a Data Science enthusiast skilled in R, Python, SAS, and SQL, eager
-        to collaborate on ML and data projects.
-      </p>
+      <h3 className="home__subtitle">{t.home_subjudul}</h3>
+      <p className="home__description">{t.home_deskripsi}</p>
 
       <a href="#contact" className="button button--flex">
         Say Hello

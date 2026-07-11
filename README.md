@@ -112,11 +112,11 @@ Konfigurasi `SHEET_ID` ada di [src/lib/sheet.js](src/lib/sheet.js).
 
    | File template | Nama tab |
    |---------------|----------|
-   | [portfolio-sheet-template.csv](portfolio-sheet-template.csv) | `Portfolio` |
-   | [sheet-template-teks.csv](sheet-template-teks.csv) | `Teks` |
-   | [sheet-template-kualifikasi.csv](sheet-template-kualifikasi.csv) | `Kualifikasi` |
-   | [sheet-template-testimoni.csv](sheet-template-testimoni.csv) | `Testimoni` |
-   | [sheet-template-services.csv](sheet-template-services.csv) | `Services` |
+   | [portfolio-sheet-template.csv](sheet-templates/portfolio-sheet-template.csv) | `Portfolio` |
+   | [sheet-template-teks.csv](sheet-templates/sheet-template-teks.csv) | `Teks` |
+   | [sheet-template-kualifikasi.csv](sheet-templates/sheet-template-kualifikasi.csv) | `Kualifikasi` |
+   | [sheet-template-testimoni.csv](sheet-templates/sheet-template-testimoni.csv) | `Testimoni` |
+   | [sheet-template-services.csv](sheet-templates/sheet-template-services.csv) | `Services` |
 
 2. Ubah kolom **Tampilkan** jadi checkbox: pilih kolomnya → `Insert > Checkbox`
    (di semua tab yang punya kolom itu).

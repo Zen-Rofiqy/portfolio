@@ -3,8 +3,11 @@ import "./about.css";
 import AboutImg from "../../assets/about.jpeg";
 import CV from "../../assets/CV_Angga Fathan Rofiqy.pdf";
 import Info from "./Info";
+import { useTexts } from "../../lib/texts";
 
 const About = () => {
+  const t = useTexts();
+
   return (
     <section className="about section" id="about">
       <h2 className="section__title">About Me</h2>
@@ -16,14 +19,7 @@ const About = () => {
         <div className="about__data">
           <Info />
 
-          <p className="about__description">
-            Angga Fathan Rofiqy is a data science student specializing in
-            machine learning and statistical analysis. With a foundation in
-            Statistics from Bogor Agricultural University, he ranked in the top
-            10% of Bangkit Academy 2024's Machine Learning Path. Angga combines
-            technical skills with systematic thinking to deliver efficient,
-            data-driven solutions.
-          </p>
+          <p className="about__description">{t.about_deskripsi}</p>
 
           <a download="" href={CV} className="button button--flex">
             Download CV

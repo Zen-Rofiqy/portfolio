@@ -1,15 +1,12 @@
 // ============================================================
-//  KONFIGURASI GOOGLE SHEET
+//  PORTFOLIO via Google Sheet — tab "Portfolio"
 //  ------------------------------------------------------------
-//  Tempel ID Google Sheet Anda di antara tanda kutip SHEET_ID.
-//  ID = bagian di URL sheet:
-//    docs.google.com/spreadsheets/d/<INI_ID_NYA>/edit
-//  Syarat: sheet di-Share "Anyone with the link: Viewer".
-//
-//  Biarkan SHEET_ID kosong ("") kalau belum pakai Sheet —
-//  situs otomatis pakai DATA CADANGAN di bawah.
+//  Konfigurasi SHEET_ID ada di src/lib/sheet.js (dipakai
+//  bersama semua section). Kolom tab: Tampilkan | Judul |
+//  Kategori | Folder | Urutan | Link.
 // ============================================================
-export const SHEET_ID = "1_7JeW0bu3MT4yDStz5rliGLlHOGeOBt77_koY7vb3Oc";
+import { fetchSheetRows, isTruthy } from "../../lib/sheet";
+
 export const SHEET_NAME = "Portfolio"; // nama tab di dalam Google Sheet
 
 // Nama file cover di tiap folder proyek (public/portfolio/<folder>/cover.jpg)
@@ -44,90 +41,20 @@ export const fallbackProjects = [
   { order: 15, folder: "ipb-statistics-tshirt",          title: "IPB Statistics T-shirt",            category: "design",           link: "" },
 ];
 
-// ============================================================
-//  AMBIL DATA DARI GOOGLE SHEET (runtime)
-//  ------------------------------------------------------------
-//  Tidak perlu diubah. Mengembalikan array proyek yang sudah
-//  difilter (Tampilkan == TRUE) & diurutkan (Urutan). Kalau
-//  SHEET_ID kosong -> null (pakai fallback).
-// ============================================================
-
-// Nilai kolom "Tampilkan" yang dianggap TRUE (case-insensitive)
-const TRUTHY = ["true", "1", "ya", "yes", "y", "✓", "checked"];
-
-// Parser CSV mini (mendukung koma & tanda kutip di dalam sel — RFC 4180)
-function parseCSV(text) {
-  const rows = [];
-  let row = [];
-  let field = "";
-  let inQuotes = false;
-
-  for (let i = 0; i < text.length; i++) {
-    const c = text[i];
-    if (inQuotes) {
-      if (c === '"') {
-        if (text[i + 1] === '"') {
-          field += '"';
-          i++;
-        } else {
-          inQuotes = false;
-        }
-      } else {
-        field += c;
-      }
-    } else if (c === '"') {
-      inQuotes = true;
-    } else if (c === ",") {
-      row.push(field);
-      field = "";
-    } else if (c === "\n") {
-      row.push(field);
-      rows.push(row);
-      row = [];
-      field = "";
-    } else if (c !== "\r") {
-      field += c;
-    }
-  }
-  if (field.length > 0 || row.length > 0) {
-    row.push(field);
-    rows.push(row);
-  }
-  return rows;
-}
-
+// Ambil & susun data proyek dari Sheet: difilter (Tampilkan
+// dicentang) dan diurutkan (Urutan). null = pakai fallback.
 export async function fetchProjects() {
-  if (!SHEET_ID) return null;
-
-  const url =
-    `https://docs.google.com/spreadsheets/d/${SHEET_ID}` +
-    `/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(SHEET_NAME)}`;
-
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`Google Sheet HTTP ${res.status}`);
-
-  const rows = parseCSV(await res.text());
-  if (rows.length < 2) return null;
-
-  const header = rows[0].map((h) => h.trim().toLowerCase());
-  const col = (name) => header.indexOf(name);
-  const iShow = col("tampilkan");
-  const iTitle = col("judul");
-  const iCat = col("kategori");
-  const iFolder = col("folder");
-  const iOrder = col("urutan");
-  const iLink = col("link");
-  const cell = (r, i) => (i >= 0 && i < r.length ? r[i].trim() : "");
+  const rows = await fetchSheetRows(SHEET_NAME);
+  if (!rows) return null;
 
   return rows
-    .slice(1)
     .map((r) => ({
-      show: TRUTHY.includes(cell(r, iShow).toLowerCase()),
-      title: cell(r, iTitle),
-      category: cell(r, iCat).toLowerCase(),
-      folder: cell(r, iFolder),
-      order: Number(cell(r, iOrder)) || 0,
-      link: cell(r, iLink),
+      show: isTruthy(r.tampilkan),
+      title: r.judul || "",
+      category: (r.kategori || "").toLowerCase(),
+      folder: r.folder || "",
+      order: Number(r.urutan) || 0,
+      link: r.link || "",
     }))
     .filter((p) => p.show && p.folder && p.title)
     .sort((a, b) => a.order - b.order);
