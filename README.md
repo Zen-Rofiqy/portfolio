@@ -61,7 +61,10 @@ git push
 | Services | **Google Sheet** tab `Services` |
 | CV (tombol Download CV) | **Google Sheet** tab `CV` |
 | Skills | **Google Sheet** tab `Skills` (ikon baru: `src/components/skills/icons.jsx`) |
-| Kontak (form) | `src/components/contact/Contact.jsx` |
+| Ikon sosial (samping Home & footer) | **Google Sheet** tab `Sosial` (ikon custom: `public/social/`) |
+| Kontak — kartu "Talk to me" (email/WA/IG) | **Google Sheet** tab `Kontak` |
+| Kontak — form kirim pesan | `src/components/contact/Contact.jsx` (EmailJS) |
+| Copyright footer | `src/components/footer/Footer.jsx` (tetap `Crypticalcoder` — atribusi template) |
 | Foto profil | `src/assets/profile-1.jpeg` |
 | Foto About | `src/assets/about.jpeg` |
 
@@ -98,8 +101,10 @@ beberapa tab — bisa diubah dari mana saja (termasuk HP) **tanpa push & tanpa t
 | `Services` | Kartu layanan: judul, deskripsi, daftar poin, ikon |
 | `CV` | Link Google Docs CV mana yang aktif di tombol "Download CV" |
 | `Skills` | Kartu skill per kategori: nama, level, ikon, urutan |
+| `Sosial` | Ikon link sosial di samping Home & footer (LinkedIn, GitHub, Tableau, dst) |
+| `Kontak` | Kartu "Talk to me": Email, Whatsapp, Instagram, dst |
 
-Gambar tetap di repo (`public/portfolio/`, `public/testimonials/`), jadi aman & cepat.
+Gambar tetap di repo (`public/portfolio/`, `public/testimonials/`, `public/social/`), jadi aman & cepat.
 Konfigurasi `SHEET_ID` ada di [src/lib/sheet.js](src/lib/sheet.js).
 
 > Perubahan di Sheet muncul di situs dengan jeda ±5 menit (cache Google). Wajar.
@@ -215,6 +220,42 @@ Kunci yang tersedia: `home_subjudul`, `home_deskripsi`, `about_deskripsi`,
 > Kategori baru otomatis tampil sebagai kartu baru — tapi urutan **kartu kategori**
 > (Data Science duluan, lalu Data Analysis, dst) diatur di `CATEGORIES` pada
 > [Data.jsx](src/components/skills/Data.jsx), bukan dari Sheet.
+
+**`Sosial`** — ikon link sosial (samping Home & footer, satu daftar untuk dua tempat)
+
+| Kolom | Isi |
+|-------|-----|
+| Tampilkan | Checkbox tampil/sembunyi |
+| Nama | Label sosial, mis. `LinkedIn` (dipakai untuk tooltip) |
+| Ikon | Nama **font-icon** atau **file gambar** — lihat catatan di bawah |
+| Link | URL tujuan, mis. `https://github.com/Zen-Rofiqy` |
+| Lokasi | `samping` (cuma Home), `footer` (cuma footer), atau `keduanya` |
+| Urutan | Urutan tampil (kecil = duluan) |
+
+> **Kolom Ikon** menerima dua bentuk:
+> - **Font-icon** kalau logonya tersedia: `uil-linkedin` ([Unicons](https://iconscout.com/unicons))
+>   atau `bxl-instagram` / `bx-mail-send` ([Boxicons](https://boxicons.com)).
+> - **File gambar** untuk logo yang tak ada di font (Tableau, Kaggle, RPubs, X): taruh `.svg`
+>   di `public/social/` lalu tulis nama filenya, mis. `tableau.svg`. Gambar otomatis ikut
+>   warna & ukuran seperti ikon font.
+
+**`Kontak`** — kartu "Talk to me" di section Get in touch
+
+| Kolom | Isi |
+|-------|-----|
+| Tampilkan | Checkbox tampil/sembunyi |
+| Judul | Judul kartu, mis. `Email`, `Whatsapp` |
+| Ikon | Font-icon atau file gambar (sama seperti tab `Sosial` di atas) |
+| Data | Teks yang tampil (email, nomor, username) |
+| Link | Tujuan tombol "Write me", mis. `mailto:...`, `https://wa.me/...` |
+| Urutan | Urutan kartu (kecil = duluan) |
+
+### Menambah sosial / kontak baru
+
+- Kalau **logonya ada di font ikon** (Boxicons/Unicons): cukup tambah 1 baris di tab
+  `Sosial`/`Kontak` dan tulis nama ikonnya — tak perlu commit/push.
+- Kalau **logonya belum ada** (mis. platform baru): taruh file `.svg` di `public/social/`
+  (commit + push sekali), lalu tulis nama filenya di kolom `Ikon`.
 
 ### Ganti CV per lamaran (ATS)
 

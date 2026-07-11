@@ -45,19 +45,22 @@ graph LR
 
 ## Alur data (Google Sheet)
 
-6 dari 11 section ambil konten dari Google Sheet lewat `src/lib/sheet.js` saat runtime;
+9 dari 11 section ambil konten dari Google Sheet lewat `src/lib/sheet.js` saat runtime;
 kalau fetch gagal, tiap section jatuh ke `Data.jsx`/fallback bawaannya sendiri.
 
 ```mermaid
 graph LR
-  Sheet["Google Sheet<br/>(data live)"] -->|"tab Teks · Portfolio · Kualifikasi<br/>Testimoni · Services · CV"| Lib["src/lib/sheet.js<br/>(SHEET_ID + fetch CSV)"]
+  Sheet["Google Sheet<br/>(data live)"] -->|"tab Teks · Portfolio · Kualifikasi · Testimoni<br/>Services · Skills · CV · Sosial · Kontak"| Lib["src/lib/sheet.js<br/>(SHEET_ID + fetch CSV)"]
 
   Lib --> Home
   Lib --> About
+  Lib --> Skills
   Lib --> Services
   Lib --> Qualification
   Lib --> Work
   Lib --> Testimonials
+  Lib --> Contact
+  Lib --> Footer
 
   classDef ext fill:#d9ead3,stroke:#93c47d,color:#274e13,font-size:11px;
   classDef sub fill:#eee,stroke:#bbb,color:#333,font-size:11px;
@@ -65,30 +68,37 @@ graph LR
   class Lib sub;
 ```
 
+> Home & Footer berbagi tab `Sosial` lewat `src/lib/socials.jsx` (kolom `Lokasi`
+> menentukan tampil di samping Home, di Footer, atau keduanya).
+
 ## Mana yang punya data konten terpisah
 
 Kalau mau ubah **isi/teks/daftar**, cari `Data.jsx` dulu; kalau mau ubah **tampilan**, edit `<Nama>.jsx`/`.css`.
 
 | Section | File konten | Sub-komponen |
 |---------|-------------|--------------|
-| Home | **Sheet tab `Teks`** (subjudul & deskripsi) via `lib/texts.js` | `Data.jsx`, `Social.jsx`, `ScrollDown.jsx` |
+| Home | **Sheet tab `Teks`** (subjudul & deskripsi) via `lib/texts.js` + **Sheet tab `Sosial`** (ikon sosial samping) via `lib/socials.jsx` | `Data.jsx`, `Social.jsx`, `ScrollDown.jsx` |
 | About | **Sheet tab `Teks`** (deskripsi & info box) via `lib/texts.js` + **Sheet tab `CV`** (link CV aktif) via `about/Data.jsx` | `Info.jsx`, `Data.jsx` |
-| Skills | — | 6 kartu skill (`Frontend.jsx`, `Database.jsx`, dst) |
+| Skills | **Sheet tab `Skills`** + `skills/Data.jsx` (fallback & urutan kategori); ikon di `icons.jsx` | 6 kartu skill (`Frontend.jsx`, `Database.jsx`, dst) |
 | Services | **Sheet tab `Services`** + `services/Data.jsx` (fallback) | — |
 | Qualification | **Sheet tab `Kualifikasi`** + `qualification/Data.jsx` (fallback) | — |
 | Work | **Sheet tab `Portfolio`** + `work/Data.jsx` (fallback) | `Works.jsx`, `WorkItems.jsx` |
 | Testimonials | **Sheet tab `Testimoni`** + `testimonials/Data.jsx` (fallback) | — |
-| Contact, Header, Footer, ScrollUp | — (langsung di `.jsx`) | — |
+| Contact | **Sheet tab `Kontak`** (kartu "Talk to me") + `contact/Data.jsx` (fallback); form kirim pesan EmailJS tetap di `Contact.jsx` | — |
+| Footer | **Sheet tab `Sosial`** (ikon sosial, filter footer) via `lib/socials.jsx`; judul/nav/copyright hardcoded | — |
+| Header, ScrollUp | — (langsung di `.jsx`) | — |
 
 Konfigurasi `SHEET_ID`, parser CSV, dan hook `useSheetList` dipakai bersama di
-`src/lib/sheet.js`; teks tunggal (kunci–nilai) lewat `src/lib/texts.js`.
+`src/lib/sheet.js`; teks tunggal (kunci–nilai) lewat `src/lib/texts.js`; ikon sosial
+(font-icon vs gambar) + tab `Sosial` lewat `src/lib/socials.jsx`.
 
 ## Peta folder
 
 ```
 public/
 ├── portfolio/          # gambar Portfolio, 1 folder per proyek: <slug>/cover.jpg (+ galeri Details)
-└── testimonials/       # foto testimoni (dirujuk kolom Foto di Sheet tab Testimoni)
+├── testimonials/       # foto testimoni (dirujuk kolom Foto di Sheet tab Testimoni)
+└── social/             # ikon sosial custom .svg (Tableau/Kaggle/RPubs/X) — dirujuk kolom Ikon di Sheet tab Sosial/Kontak
 src/
 ├── main.jsx            # entry — mount <App> ke #root
 ├── App.jsx             # susun semua section berurutan
@@ -97,18 +107,20 @@ src/
 ├── assets/             # gambar, ikon SVG
 ├── lib/
 │   ├── sheet.js        # SHEET_ID + fetch/parser CSV + hook useSheetList (dipakai semua section)
-│   └── texts.js        # tab "Teks" (kunci–nilai) + teks cadangan
+│   ├── texts.js        # tab "Teks" (kunci–nilai) + teks cadangan
+│   ├── socials.jsx     # tab "Sosial" + renderer ikon (font vs gambar) — dipakai Home & Footer
+│   └── socials.css     # style ikon sosial berbasis gambar (mask, ikut warna)
 └── components/
     ├── header/         # navbar
-    ├── home/           # hero + sosial + scroll indicator
+    ├── home/           # hero + sosial (Sheet tab Sosial) + scroll indicator
     ├── about/          # tentang + info + link CV aktif (Sheet tab CV)
     ├── skills/         # kumpulan kartu skill
     ├── services/       # layanan
     ├── qualification/  # pendidikan/pengalaman
     ├── work/           # portfolio projek (data dari Google Sheet; gambar di public/portfolio/)
     ├── testimonials/   # testimoni (pakai Data.jsx, slider Swiper)
-    ├── contact/        # form kontak (EmailJS)
-    ├── footer/         # footer
+    ├── contact/        # kartu "Talk to me" (Sheet tab Kontak, Data.jsx) + form kirim pesan (EmailJS)
+    ├── footer/         # footer (ikon sosial dari Sheet tab Sosial)
     └── scrollup/       # tombol scroll-to-top
 ```
 
@@ -118,8 +130,9 @@ src/
 - **Swiper** dipakai untuk slider (testimoni).
 - **EmailJS** menangani pengiriman form kontak tanpa backend.
 - **Google Sheet** jadi sumber konten teks: satu spreadsheet dengan tab `Portfolio`,
-  `Teks`, `Kualifikasi`, `Testimoni`, `Services`, `CV`. Tiap section men-`fetch` CSV tab-nya
-  saat runtime lewat `src/lib/sheet.js` (difilter `Tampilkan`/`Aktif`, diurutkan `Urutan`
-  kalau ada); kalau gagal/ID kosong, jatuh ke data cadangan di kode supaya tak pernah blank.
+  `Teks`, `Kualifikasi`, `Testimoni`, `Services`, `Skills`, `CV`, `Sosial`, `Kontak`. Tiap
+  section men-`fetch` CSV tab-nya saat runtime lewat `src/lib/sheet.js` (difilter
+  `Tampilkan`/`Aktif`, diurutkan `Urutan` kalau ada); kalau gagal/ID kosong, jatuh ke data
+  cadangan di kode supaya tak pernah blank.
 
 > Diagram Mermaid tampil otomatis di GitHub & preview Markdown VSCode.
