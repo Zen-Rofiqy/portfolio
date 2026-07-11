@@ -3,13 +3,11 @@ import "./about.css";
 import AboutImg from "../../assets/about.jpeg";
 import Info from "./Info";
 import { useTexts } from "../../lib/texts";
-
-// CV di-edit langsung via Google Docs, tombol download narik PDF terbaru otomatis.
-const CV_URL =
-  "https://docs.google.com/document/d/1E-Y7gq9F4ryDm4nMZ8aTC9hcna8jMwFqt3OsKqKUQgY/export?format=pdf";
+import { useCVUrl } from "./Data";
 
 const About = () => {
   const t = useTexts();
+  const cvUrl = useCVUrl();
 
   return (
     <section className="about section" id="about">
@@ -25,7 +23,7 @@ const About = () => {
           <p className="about__description">{t.about_deskripsi}</p>
 
           <a
-            href={CV_URL}
+            href={cvUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="button button--flex"
