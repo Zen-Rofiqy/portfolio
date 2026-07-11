@@ -43,14 +43,6 @@ const Footer = () => {
           >
             <i class="bx bxl-instagram"></i>
           </a>
-
-          <a
-            href="https://steamcommunity.com/profiles/76561199048452975/"
-            className="footer__social-link"
-            target="_blank"
-          >
-            <i class="bx bxl-steam"></i>
-          </a>
         </div>
 
         <span className="footer__copy">

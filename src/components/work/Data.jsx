@@ -1,123 +1,134 @@
-import Work1 from "../../assets/work_1.jpg";
-import Work2 from "../../assets/work_2.jpg";
-import Work3 from "../../assets/work_3.jpg";
-import Work4 from "../../assets/work_4.jpg";
-import Work5 from "../../assets/work_5.jpg";
-import Work6 from "../../assets/work_6.jpg";
-import Work7 from "../../assets/work_7.jpg";
-import Work8 from "../../assets/work_8.jpg";
-import Work9 from "../../assets/work_9.jpg";
-import Work10 from "../../assets/work_10.jpg";
-import Work11 from "../../assets/work_11.jpg";
-import Work12 from "../../assets/work_12.jpg";
-import Work13 from "../../assets/work_13.jpg";
-import Work14 from "../../assets/work_14.jpg";
-import Work15 from "../../assets/work_15.jpg";
+// ============================================================
+//  KONFIGURASI GOOGLE SHEET
+//  ------------------------------------------------------------
+//  Tempel ID Google Sheet Anda di antara tanda kutip SHEET_ID.
+//  ID = bagian di URL sheet:
+//    docs.google.com/spreadsheets/d/<INI_ID_NYA>/edit
+//  Syarat: sheet di-Share "Anyone with the link: Viewer".
+//
+//  Biarkan SHEET_ID kosong ("") kalau belum pakai Sheet —
+//  situs otomatis pakai DATA CADANGAN di bawah.
+// ============================================================
+export const SHEET_ID = "1_7JeW0bu3MT4yDStz5rliGLlHOGeOBt77_koY7vb3Oc";
+export const SHEET_NAME = "Portfolio"; // nama tab di dalam Google Sheet
 
-export const projectsData = [
-  {
-    id: 1,
-    image: Work1,
-    title: "Surveyor - IPM Bandung",
-    category: "statistics",
-  },
-  {
-    id: 2,
-    image: Work2,
-    title: "Works of KKNT IPB",
-    category: "statistics",
-  },
-  {
-    id: 3,
-    image: Work3,
-    title: "Tancap App - Bangkit Academy",
-    category: "machine learning",
-  },
-  {
-    id: 4,
-    image: Work4,
-    title: "Works of PKM RSH",
-    category: "statistics",
-  },
-  {
-    id: 5,
-    image: Work5,
-    title: "Porstat 2022 Instagram Feeds",
-    category: "design",
-  },
-  {
-    id: 6,
-    image: Work6,
-    title: "Spirit FMIPA 2022 Instagram Feeds",
-    category: "design",
-  },
-  {
-    id: 7,
-    image: Work7,
-    title: "Bayesian Neural Network",
-    category: "machine learning",
-  },
-  {
-    id: 8,
-    image: Work8,
-    title: "Clustering: K-Means, FCM, and GMM",
-    category: "statistics",
-  },
-  {
-    id: 9,
-    image: Work9,
-    title: "Data Challenge Final Project",
-    category: "statistics",
-  },
-  {
-    id: 10,
-    image: Work10,
-    title: "ARCH-GARCH Forecasting",
-    category: "statistics",
-  },
-  {
-    id: 11,
-    image: Work11,
-    title: "Spatial Regression Final Project",
-    category: "statistics",
-  },
-  {
-    id: 12,
-    image: Work12,
-    title: "Clusering: Gaussian Mixture Model",
-    category: "statistics",
-  },
-  {
-    id: 13,
-    image: Work13,
-    title: "Gatot Kaca Design Poster",
-    category: "design",
-  },
-  {
-    id: 14,
-    image: Work14,
-    title: "IPB Statistics Jersey",
-    category: "design",
-  },
-  {
-    id: 15,
-    image: Work15,
-    title: "IPB Statistics T-shirt",
-    category: "design",
-  },
+// Nama file cover di tiap folder proyek (public/portfolio/<folder>/cover.jpg)
+const COVER_FILE = "cover.jpg";
+
+// Bangun path gambar cover dari nama folder proyek.
+export const coverUrl = (folder) =>
+  `${import.meta.env.BASE_URL}portfolio/${folder}/${COVER_FILE}`;
+
+// ============================================================
+//  DATA CADANGAN (fallback)
+//  ------------------------------------------------------------
+//  Dipakai saat SHEET_ID kosong / Google tak bisa diakses,
+//  supaya bagian Portfolio tidak pernah kosong.
+//  Kolomnya sama persis dengan kolom di Google Sheet.
+// ============================================================
+export const fallbackProjects = [
+  { order: 1,  folder: "surveyor-ipm-bandung",           title: "Surveyor - IPM Bandung",            category: "statistics",       link: "" },
+  { order: 2,  folder: "works-kknt-ipb",                 title: "Works of KKNT IPB",                 category: "statistics",       link: "" },
+  { order: 3,  folder: "tancap-app-bangkit-academy",     title: "Tancap App - Bangkit Academy",      category: "machine learning", link: "" },
+  { order: 4,  folder: "works-pkm-rsh",                  title: "Works of PKM RSH",                  category: "statistics",       link: "" },
+  { order: 5,  folder: "porstat-2022-instagram-feeds",   title: "Porstat 2022 Instagram Feeds",      category: "design",           link: "" },
+  { order: 6,  folder: "spirit-fmipa-2022-instagram-feeds", title: "Spirit FMIPA 2022 Instagram Feeds", category: "design",        link: "" },
+  { order: 7,  folder: "bayesian-neural-network",        title: "Bayesian Neural Network",           category: "machine learning", link: "" },
+  { order: 8,  folder: "clustering-kmeans-fcm-gmm",      title: "Clustering: K-Means, FCM, and GMM", category: "statistics",       link: "" },
+  { order: 9,  folder: "data-challenge-final-project",   title: "Data Challenge Final Project",      category: "statistics",       link: "" },
+  { order: 10, folder: "arch-garch-forecasting",         title: "ARCH-GARCH Forecasting",            category: "statistics",       link: "" },
+  { order: 11, folder: "spatial-regression-final-project", title: "Spatial Regression Final Project", category: "statistics",      link: "" },
+  { order: 12, folder: "clustering-gaussian-mixture-model", title: "Clusering: Gaussian Mixture Model", category: "statistics",    link: "" },
+  { order: 13, folder: "gatot-kaca-design-poster",       title: "Gatot Kaca Design Poster",          category: "design",           link: "" },
+  { order: 14, folder: "ipb-statistics-jersey",          title: "IPB Statistics Jersey",             category: "design",           link: "" },
+  { order: 15, folder: "ipb-statistics-tshirt",          title: "IPB Statistics T-shirt",            category: "design",           link: "" },
 ];
 
-export const projectsNav = [
-  {
-    name: "all",
-  },
-  {
-    name: "statistics",
-  },
-  {
-    name: "machine learning",
-  },
-  {
-    name: "design",
-  },
-];
+// ============================================================
+//  AMBIL DATA DARI GOOGLE SHEET (runtime)
+//  ------------------------------------------------------------
+//  Tidak perlu diubah. Mengembalikan array proyek yang sudah
+//  difilter (Tampilkan == TRUE) & diurutkan (Urutan). Kalau
+//  SHEET_ID kosong -> null (pakai fallback).
+// ============================================================
+
+// Nilai kolom "Tampilkan" yang dianggap TRUE (case-insensitive)
+const TRUTHY = ["true", "1", "ya", "yes", "y", "✓", "checked"];
+
+// Parser CSV mini (mendukung koma & tanda kutip di dalam sel — RFC 4180)
+function parseCSV(text) {
+  const rows = [];
+  let row = [];
+  let field = "";
+  let inQuotes = false;
+
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (inQuotes) {
+      if (c === '"') {
+        if (text[i + 1] === '"') {
+          field += '"';
+          i++;
+        } else {
+          inQuotes = false;
+        }
+      } else {
+        field += c;
+      }
+    } else if (c === '"') {
+      inQuotes = true;
+    } else if (c === ",") {
+      row.push(field);
+      field = "";
+    } else if (c === "\n") {
+      row.push(field);
+      rows.push(row);
+      row = [];
+      field = "";
+    } else if (c !== "\r") {
+      field += c;
+    }
+  }
+  if (field.length > 0 || row.length > 0) {
+    row.push(field);
+    rows.push(row);
+  }
+  return rows;
+}
+
+export async function fetchProjects() {
+  if (!SHEET_ID) return null;
+
+  const url =
+    `https://docs.google.com/spreadsheets/d/${SHEET_ID}` +
+    `/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(SHEET_NAME)}`;
+
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`Google Sheet HTTP ${res.status}`);
+
+  const rows = parseCSV(await res.text());
+  if (rows.length < 2) return null;
+
+  const header = rows[0].map((h) => h.trim().toLowerCase());
+  const col = (name) => header.indexOf(name);
+  const iShow = col("tampilkan");
+  const iTitle = col("judul");
+  const iCat = col("kategori");
+  const iFolder = col("folder");
+  const iOrder = col("urutan");
+  const iLink = col("link");
+  const cell = (r, i) => (i >= 0 && i < r.length ? r[i].trim() : "");
+
+  return rows
+    .slice(1)
+    .map((r) => ({
+      show: TRUTHY.includes(cell(r, iShow).toLowerCase()),
+      title: cell(r, iTitle),
+      category: cell(r, iCat).toLowerCase(),
+      folder: cell(r, iFolder),
+      order: Number(cell(r, iOrder)) || 0,
+      link: cell(r, iLink),
+    }))
+    .filter((p) => p.show && p.folder && p.title)
+    .sort((a, b) => a.order - b.order);
+}
