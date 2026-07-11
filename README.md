@@ -54,7 +54,7 @@ git push
 
 | Bagian | Lokasi file |
 |--------|-------------|
-| Projek / karya | `src/components/work/Data.jsx` + gambar `src/assets/work_*.jpg` |
+| Projek / karya | **Google Sheet** (lihat bagian 6) + gambar `public/portfolio/<slug>/cover.jpg` |
 | Testimoni | `src/components/testimonials/Data.jsx` + `src/assets/testimonial*.png` |
 | Home / intro | `src/components/home/` |
 | About | `src/components/about/` + `src/assets/about.jpeg` |
@@ -81,7 +81,47 @@ git push
 
 ---
 
-## 5. Referensi
+## 6. Portfolio via Google Sheet
+
+Bagian **Portfolio** dikendalikan dari Google Sheet — teks, urutan, dan tampil/sembunyi
+kartu bisa Anda ubah dari mana saja (termasuk HP) **tanpa push & tanpa terminal**.
+Gambar tetap di repo (`public/portfolio/`), jadi aman & cepat.
+
+### Setup sekali (aktifkan Sheet)
+
+1. Buka [portfolio-sheet-template.csv](portfolio-sheet-template.csv) → buat Google Sheet
+   baru → `File > Import > Upload` file itu → **Replace current sheet**.
+2. Ganti nama tab (di kiri bawah) menjadi **`Portfolio`** (harus persis).
+3. Ubah kolom **Tampilkan** jadi checkbox: pilih kolomnya → `Insert > Checkbox`.
+4. `Share` → **Anyone with the link: Viewer**.
+5. Salin **ID** dari URL sheet: `docs.google.com/spreadsheets/d/`**`<ID INI>`**`/edit`
+   → tempel ke `SHEET_ID` di [src/components/work/Data.jsx](src/components/work/Data.jsx),
+   lalu commit + push sekali. Setelah ini konten cukup diedit dari Sheet.
+
+> Perubahan di Sheet muncul di situs dengan jeda ±5 menit (cache Google). Wajar.
+> Kalau `SHEET_ID` dikosongkan atau Google tak bisa diakses, situs otomatis pakai
+> data cadangan di `Data.jsx` — tidak pernah blank.
+
+### Kolom Sheet
+
+| Kolom | Isi |
+|-------|-----|
+| Tampilkan | Checkbox. Dicentang = kartu muncul, kosong = disembunyikan |
+| Judul | Judul kartu |
+| Kategori | `statistics` / `machine learning` / `design` (bebas tambah baru) |
+| Folder | Nama folder di `public/portfolio/` (slug), mis. `surveyor-ipm-bandung` |
+| Urutan | Angka urutan tampil (kecil = duluan) |
+| Link | (Opsional) URL tujuan tombol "Details" |
+
+### Menambah proyek baru
+
+1. Buat folder `public/portfolio/<slug-baru>/` dan taruh **`cover.jpg`** di dalamnya
+   (boleh juga `01.jpg`, `02.jpg`, … untuk galeri Details nanti). Commit + push.
+2. Tambah 1 baris di Sheet: centang Tampilkan, isi Judul/Kategori/`Folder` = slug tadi/Urutan.
+
+> Filter kategori (All/Statistics/…) muncul otomatis dari data — tak perlu edit kode.
+
+## 7. Referensi
 
 - Video setup awal: https://youtu.be/xvKe4vFNnVg
 - Node.js: https://nodejs.org/en
