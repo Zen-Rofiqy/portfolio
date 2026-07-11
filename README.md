@@ -59,9 +59,9 @@ git push
 | Qualification / pengalaman | **Google Sheet** tab `Kualifikasi` |
 | Testimoni | **Google Sheet** tab `Testimoni` + foto `public/testimonials/` |
 | Services | **Google Sheet** tab `Services` |
+| CV (tombol Download CV) | **Google Sheet** tab `CV` |
 | Skills | `src/components/skills/` |
 | Kontak (form) | `src/components/contact/Contact.jsx` |
-| CV (file PDF) | `src/assets/CV_*.pdf` |
 | Foto profil | `src/assets/profile-1.jpeg` |
 | Foto About | `src/assets/about.jpeg` |
 

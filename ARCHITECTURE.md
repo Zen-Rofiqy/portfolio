@@ -34,7 +34,7 @@ graph LR
   App --> ScrollUp
 
   Home --> HomeSub["Data.jsx · Social.jsx · ScrollDown.jsx"]
-  About --> AboutSub["Info.jsx"]
+  About --> AboutSub["Info.jsx · Data.jsx"]
   Skills --> SkillsSub["Frontend · Database · Design<br/>DataAnalysis · DataScience · DataViz"]
   Work --> WorkSub["Works.jsx · WorkItems.jsx"]
   Testimonials --> TestiSub["Data.jsx"]
@@ -50,7 +50,7 @@ kalau fetch gagal, tiap section jatuh ke `Data.jsx`/fallback bawaannya sendiri.
 
 ```mermaid
 graph LR
-  Sheet["Google Sheet<br/>(data live)"] -->|"tab Teks · Portfolio · Kualifikasi<br/>Testimoni · Services"| Lib["src/lib/sheet.js<br/>(SHEET_ID + fetch CSV)"]
+  Sheet["Google Sheet<br/>(data live)"] -->|"tab Teks · Portfolio · Kualifikasi<br/>Testimoni · Services · CV"| Lib["src/lib/sheet.js<br/>(SHEET_ID + fetch CSV)"]
 
   Lib --> Home
   Lib --> About
@@ -72,7 +72,7 @@ Kalau mau ubah **isi/teks/daftar**, cari `Data.jsx` dulu; kalau mau ubah **tampi
 | Section | File konten | Sub-komponen |
 |---------|-------------|--------------|
 | Home | **Sheet tab `Teks`** (subjudul & deskripsi) via `lib/texts.js` | `Data.jsx`, `Social.jsx`, `ScrollDown.jsx` |
-| About | **Sheet tab `Teks`** (deskripsi & info box) via `lib/texts.js` | `Info.jsx` |
+| About | **Sheet tab `Teks`** (deskripsi & info box) via `lib/texts.js` + **Sheet tab `CV`** (link CV aktif) via `about/Data.jsx` | `Info.jsx`, `Data.jsx` |
 | Skills | — | 6 kartu skill (`Frontend.jsx`, `Database.jsx`, dst) |
 | Services | **Sheet tab `Services`** + `services/Data.jsx` (fallback) | — |
 | Qualification | **Sheet tab `Kualifikasi`** + `qualification/Data.jsx` (fallback) | — |
@@ -94,14 +94,14 @@ src/
 ├── App.jsx             # susun semua section berurutan
 ├── index.css           # style global + variabel
 ├── App.css             # style layout utama
-├── assets/             # gambar, ikon SVG, CV PDF
+├── assets/             # gambar, ikon SVG
 ├── lib/
 │   ├── sheet.js        # SHEET_ID + fetch/parser CSV + hook useSheetList (dipakai semua section)
 │   └── texts.js        # tab "Teks" (kunci–nilai) + teks cadangan
 └── components/
     ├── header/         # navbar
     ├── home/           # hero + sosial + scroll indicator
-    ├── about/          # tentang + info
+    ├── about/          # tentang + info + link CV aktif (Sheet tab CV)
     ├── skills/         # kumpulan kartu skill
     ├── services/       # layanan
     ├── qualification/  # pendidikan/pengalaman
@@ -118,8 +118,8 @@ src/
 - **Swiper** dipakai untuk slider (testimoni).
 - **EmailJS** menangani pengiriman form kontak tanpa backend.
 - **Google Sheet** jadi sumber konten teks: satu spreadsheet dengan tab `Portfolio`,
-  `Teks`, `Kualifikasi`, `Testimoni`, `Services`. Tiap section men-`fetch` CSV tab-nya
-  saat runtime lewat `src/lib/sheet.js` (difilter `Tampilkan`, diurutkan `Urutan`);
-  kalau gagal/ID kosong, jatuh ke data cadangan di kode supaya tak pernah blank.
+  `Teks`, `Kualifikasi`, `Testimoni`, `Services`, `CV`. Tiap section men-`fetch` CSV tab-nya
+  saat runtime lewat `src/lib/sheet.js` (difilter `Tampilkan`/`Aktif`, diurutkan `Urutan`
+  kalau ada); kalau gagal/ID kosong, jatuh ke data cadangan di kode supaya tak pernah blank.
 
 > Diagram Mermaid tampil otomatis di GitHub & preview Markdown VSCode.
