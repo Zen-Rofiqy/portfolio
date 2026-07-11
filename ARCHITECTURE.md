@@ -33,11 +33,15 @@ graph LR
   Home -. berisi .-> HomeSub["Data.jsx · Social.jsx · ScrollDown.jsx"]
   About -. berisi .-> AboutSub["Info.jsx"]
   Skills -. berisi .-> SkillsSub["Frontend · Database · Design<br/>DataAnalysis · DataScience · DataViz"]
-  Work -. berisi .-> WorkSub["Works.jsx · WorkItems.jsx · Data.jsx"]
+  Work -. berisi .-> WorkSub["Works.jsx · WorkItems.jsx"]
+  WorkSub -. fetch runtime .-> Sheet["Google Sheet<br/>(data live)"]
+  WorkSub -. cadangan .-> WorkData["Data.jsx<br/>(SHEET_ID + fallback)"]
   Testimonials -. berisi .-> TestiSub["Data.jsx"]
 
   classDef sub fill:#eee,stroke:#bbb,color:#333,font-size:11px;
-  class HomeSub,AboutSub,SkillsSub,WorkSub,TestiSub sub;
+  classDef ext fill:#d9ead3,stroke:#93c47d,color:#274e13,font-size:11px;
+  class HomeSub,AboutSub,SkillsSub,WorkSub,WorkData,TestiSub sub;
+  class Sheet ext;
 ```
 
 ## Mana yang punya data konten terpisah
@@ -49,13 +53,15 @@ Kalau mau ubah **isi/teks/daftar**, cari `Data.jsx` dulu; kalau mau ubah **tampi
 | Home | `home/Data.jsx` | `Social.jsx`, `ScrollDown.jsx` |
 | About | — | `Info.jsx` |
 | Skills | — | 6 kartu skill (`Frontend.jsx`, `Database.jsx`, dst) |
-| Work | `work/Data.jsx` | `Works.jsx`, `WorkItems.jsx` |
+| Work | **Google Sheet** (runtime) + `work/Data.jsx` (config `SHEET_ID` & data cadangan) | `Works.jsx`, `WorkItems.jsx` |
 | Testimonials | `testimonials/Data.jsx` | — |
 | Services, Qualification, Contact, Header, Footer, ScrollUp | — (langsung di `.jsx`) | — |
 
 ## Peta folder
 
 ```
+public/
+└── portfolio/          # gambar Portfolio, 1 folder per proyek: <slug>/cover.jpg (+ galeri Details)
 src/
 ├── main.jsx            # entry — mount <App> ke #root
 ├── App.jsx             # susun semua section berurutan
@@ -69,7 +75,7 @@ src/
     ├── skills/         # kumpulan kartu skill
     ├── services/       # layanan
     ├── qualification/  # pendidikan/pengalaman
-    ├── work/           # portfolio projek (pakai Data.jsx)
+    ├── work/           # portfolio projek (data dari Google Sheet; gambar di public/portfolio/)
     ├── testimonials/   # testimoni (pakai Data.jsx, slider Swiper)
     ├── contact/        # form kontak (EmailJS)
     ├── footer/         # footer
@@ -81,5 +87,8 @@ src/
 - **React** merender komponen → **Vite** yang bundling & serve (dev) / build (produksi).
 - **Swiper** dipakai untuk slider (testimoni).
 - **EmailJS** menangani pengiriman form kontak tanpa backend.
+- **Google Sheet** jadi sumber data bagian Portfolio: `Works.jsx` men-`fetch` CSV Sheet saat
+  runtime (lihat `work/Data.jsx`), difilter kolom `Tampilkan` & diurutkan `Urutan`; kalau
+  gagal/ID kosong, jatuh ke data cadangan di `Data.jsx` supaya tak pernah blank.
 
 > Diagram Mermaid tampil otomatis di GitHub & preview Markdown VSCode.
