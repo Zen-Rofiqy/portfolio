@@ -96,6 +96,7 @@ beberapa tab — bisa diubah dari mana saja (termasuk HP) **tanpa push & tanpa t
 | `Kualifikasi` | Timeline Education & Experience |
 | `Testimoni` | Nama, isi testimoni, foto |
 | `Services` | Kartu layanan: judul, deskripsi, daftar poin, ikon |
+| `CV` | Link Google Docs CV mana yang aktif di tombol "Download CV" |
 
 Gambar tetap di repo (`public/portfolio/`, `public/testimonials/`), jadi aman & cepat.
 Konfigurasi `SHEET_ID` ada di [src/lib/sheet.js](src/lib/sheet.js).
@@ -117,6 +118,7 @@ Konfigurasi `SHEET_ID` ada di [src/lib/sheet.js](src/lib/sheet.js).
    | [sheet-template-kualifikasi.csv](sheet-templates/sheet-template-kualifikasi.csv) | `Kualifikasi` |
    | [sheet-template-testimoni.csv](sheet-templates/sheet-template-testimoni.csv) | `Testimoni` |
    | [sheet-template-services.csv](sheet-templates/sheet-template-services.csv) | `Services` |
+   | [sheet-template-cv.csv](sheet-templates/sheet-template-cv.csv) | `CV` |
 
 2. Ubah kolom **Tampilkan** jadi checkbox: pilih kolomnya → `Insert > Checkbox`
    (di semua tab yang punya kolom itu).
@@ -183,6 +185,24 @@ Kunci yang tersedia: `home_subjudul`, `home_deskripsi`, `about_deskripsi`,
 | Poin | Daftar layanan, **satu poin per baris** dalam satu sel (Alt+Enter) |
 | Ikon | (Opsional) nama ikon [Unicons](https://iconscout.com/unicons), mis. `uil-web-grid` |
 | Urutan | Urutan kartu (kecil = duluan) |
+
+**`CV`**
+
+| Kolom | Isi |
+|-------|-----|
+| Aktif | Checkbox. Centang **satu** baris = itu yang dipakai tombol "Download CV" (kalau lebih dari satu dicentang, yang paling atas dipakai) |
+| Nama | Label bebas untuk Anda sendiri, mis. `CV ATS - Data Analyst` (tidak dibaca situs) |
+| Link | Link **share/edit** Google Docs-nya (bukan link export) — situs otomatis ubah jadi link download PDF |
+
+> Dokumen di Link wajib `Share` → **Anyone with the link: Viewer**, kalau tidak
+> pengunjung situs akan diarahkan ke halaman login Google alih-alih dapat PDF.
+
+### Ganti CV per lamaran (ATS)
+
+Punya beberapa versi CV (mis. disesuaikan ATS per perusahaan)? Upload tiap versi
+sebagai Google Docs terpisah, tambah 1 baris per versi di tab `CV` (kolom Nama diisi
+bebas untuk penanda), lalu centang **Aktif** di versi yang mau dipakai — cukup
+pindah centang, tak perlu commit ataupun push.
 
 ### Menambah proyek baru (Portfolio)
 
