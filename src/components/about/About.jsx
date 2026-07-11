@@ -1,9 +1,12 @@
 import React from "react";
 import "./about.css";
 import AboutImg from "../../assets/about.jpeg";
-import CV from "../../assets/CV_Angga Fathan Rofiqy.pdf";
 import Info from "./Info";
 import { useTexts } from "../../lib/texts";
+
+// CV di-edit langsung via Google Docs, tombol download narik PDF terbaru otomatis.
+const CV_URL =
+  "https://docs.google.com/document/d/1E-Y7gq9F4ryDm4nMZ8aTC9hcna8jMwFqt3OsKqKUQgY/export?format=pdf";
 
 const About = () => {
   const t = useTexts();
@@ -21,7 +24,12 @@ const About = () => {
 
           <p className="about__description">{t.about_deskripsi}</p>
 
-          <a download="" href={CV} className="button button--flex">
+          <a
+            href={CV_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="button button--flex"
+          >
             Download CV
             <svg
               class="button__icon"
