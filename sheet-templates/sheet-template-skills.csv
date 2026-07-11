@@ -1,0 +1,31 @@
+Tampilkan,Kategori,Nama,Level,Icon,Urutan
+TRUE,Data Science,Python,Advanced,python,1
+TRUE,Data Science,Machine Learning,Intermediate,python,2
+TRUE,Data Science,R,Advanced,r,3
+TRUE,Data Science,SAS,Basic,sas,4
+TRUE,Data Analysis,Microsoft Excel,Advanced,excel,1
+TRUE,Data Analysis,Minitab,Basic,minitab,2
+TRUE,Data Analysis,SPSS,Basic,spss,3
+TRUE,Data Analysis,SmartPLS,Basic,smartpls,4
+TRUE,Data Viz,Tableau,Intermediate,tableau,1
+TRUE,Data Viz,Tableau Prep Builder,Basic,tableau,2
+TRUE,Data Viz,R Studio,Advanced,rstudio,3
+TRUE,Data Viz,Python,Intermediate,python,4
+TRUE,Database,SQL,Intermediate,sql,1
+TRUE,Database,DBeaver,Intermediate,dbeaver,2
+TRUE,Database,MySQL,Intermediate,mysql,3
+TRUE,Database,Oracle,Basic,oracle,4
+TRUE,Database,MariaDB,Basic,mariadb,5
+TRUE,Database,PostgreSQL,Basic,postgresql,6
+TRUE,Design,Adobe Illustrator,Advanced,illustrator,1
+TRUE,Design,Adobe Photoshop,Intermediate,photoshop,2
+TRUE,Design,Adobe Premiere Pro,Basic,premiere,3
+TRUE,Design,Figma,Basic,figma,4
+TRUE,Design,Adobe Lightroom,Basic,lightroom,5
+TRUE,Design,Adobe After Effect,Basic,after-effects,6
+TRUE,Frontend,HTML,Basic,html5,1
+TRUE,Frontend,CSS,Advanced,css3,2
+TRUE,Frontend,JavaScript,Intermediate,javascript,3
+TRUE,Frontend,Bootstrap,Intermediate,bootstrap,4
+TRUE,Frontend,Git,Advanced,git,5
+TRUE,Frontend,React,Intermediate,react,6

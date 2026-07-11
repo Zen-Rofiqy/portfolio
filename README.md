@@ -60,7 +60,7 @@ git push
 | Testimoni | **Google Sheet** tab `Testimoni` + foto `public/testimonials/` |
 | Services | **Google Sheet** tab `Services` |
 | CV (tombol Download CV) | **Google Sheet** tab `CV` |
-| Skills | `src/components/skills/` |
+| Skills | **Google Sheet** tab `Skills` (ikon baru: `src/components/skills/icons.jsx`) |
 | Kontak (form) | `src/components/contact/Contact.jsx` |
 | Foto profil | `src/assets/profile-1.jpeg` |
 | Foto About | `src/assets/about.jpeg` |
@@ -97,6 +97,7 @@ beberapa tab — bisa diubah dari mana saja (termasuk HP) **tanpa push & tanpa t
 | `Testimoni` | Nama, isi testimoni, foto |
 | `Services` | Kartu layanan: judul, deskripsi, daftar poin, ikon |
 | `CV` | Link Google Docs CV mana yang aktif di tombol "Download CV" |
+| `Skills` | Kartu skill per kategori: nama, level, ikon, urutan |
 
 Gambar tetap di repo (`public/portfolio/`, `public/testimonials/`), jadi aman & cepat.
 Konfigurasi `SHEET_ID` ada di [src/lib/sheet.js](src/lib/sheet.js).
@@ -119,6 +120,7 @@ Konfigurasi `SHEET_ID` ada di [src/lib/sheet.js](src/lib/sheet.js).
    | [sheet-template-testimoni.csv](sheet-templates/sheet-template-testimoni.csv) | `Testimoni` |
    | [sheet-template-services.csv](sheet-templates/sheet-template-services.csv) | `Services` |
    | [sheet-template-cv.csv](sheet-templates/sheet-template-cv.csv) | `CV` |
+   | [sheet-template-skills.csv](sheet-templates/sheet-template-skills.csv) | `Skills` |
 
 2. Ubah kolom **Tampilkan** jadi checkbox: pilih kolomnya → `Insert > Checkbox`
    (di semua tab yang punya kolom itu).
@@ -197,6 +199,21 @@ Kunci yang tersedia: `home_subjudul`, `home_deskripsi`, `about_deskripsi`,
 > Dokumen di Link wajib `Share` → **Anyone with the link: Viewer**, kalau tidak
 > pengunjung situs akan diarahkan ke halaman login Google alih-alih dapat PDF.
 
+**`Skills`**
+
+| Kolom | Isi |
+|-------|-----|
+| Tampilkan | Checkbox tampil/sembunyi |
+| Kategori | Nama kategori kartu, mis. `Data Science`, `Database` (bebas tambah baru) |
+| Nama | Nama skill, mis. `Python` |
+| Level | Teks bebas, mis. `Advanced` / `Intermediate` / `Basic` |
+| Icon | Key ikon — **harus** salah satu key yang sudah didaftarkan di [icons.jsx](src/components/skills/icons.jsx) |
+| Urutan | Urutan dalam kategorinya (kecil = paling atas) |
+
+> Kategori baru otomatis tampil sebagai kartu baru — tapi urutan **kartu kategori**
+> (Data Science duluan, lalu Data Analysis, dst) diatur di `CATEGORIES` pada
+> [Data.jsx](src/components/skills/Data.jsx), bukan dari Sheet.
+
 ### Ganti CV per lamaran (ATS)
 
 Punya beberapa versi CV (mis. disesuaikan ATS per perusahaan)? Upload tiap versi
@@ -216,6 +233,14 @@ pindah centang, tak perlu commit ataupun push.
 
 Taruh file foto di `public/testimonials/` (commit + push sekali), lalu tulis nama
 filenya di kolom `Foto` tab `Testimoni`.
+
+### Menambah skill baru
+
+- Kalau **ikonnya sudah ada** di [icons.jsx](src/components/skills/icons.jsx): cukup tambah
+  1 baris di tab `Skills` (Kategori/Nama/Level/Icon/Urutan) — tak perlu commit/push.
+- Kalau **ikonnya belum ada**: perlu commit + push sekali untuk menambah SVG-nya
+  sebagai entry baru di `icons.jsx` (key baru, mis. `matlab`), baru key itu dipakai
+  di kolom `Icon` tab `Skills`.
 
 ## 7. Referensi
 
