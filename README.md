@@ -152,7 +152,7 @@ Konfigurasi `SHEET_ID` ada di [src/lib/sheet.js](src/lib/sheet.js).
 |-------|-----|
 | Tampilkan | Checkbox. Dicentang = kartu muncul, kosong = disembunyikan |
 | Judul | Judul kartu |
-| Kategori | `statistics` / `machine learning` / `design` (bebas tambah baru) |
+| Kategori | `statistics` / `machine learning` / `design` (bebas tambah baru). Bisa **lebih dari satu** dipisah koma, mis. `statistics, dashboard` — karya lalu muncul di semua tab itu |
 | Folder | Nama folder di `public/portfolio/` (slug), mis. `surveyor-ipm-bandung` |
 | Urutan | Angka urutan tampil (kecil = duluan) |
 | Link | (Opsional) URL tujuan tombol "Details" |
@@ -316,7 +316,10 @@ pindah centang, tak perlu commit ataupun push.
    (boleh juga `01.jpg`, `02.jpg`, … untuk galeri Details nanti). Commit + push.
 2. Tambah 1 baris di tab `Portfolio`: centang Tampilkan, isi Judul/Kategori/`Folder` = slug tadi/Urutan.
 
-> Filter kategori (All/Statistics/…) muncul otomatis dari data — tak perlu edit kode.
+> Filter kategori (All/Statistics/Dashboard/…) muncul otomatis dari data — tak perlu edit kode.
+> Untuk menaruh satu karya di beberapa tab, tulis kategorinya dipisah koma di kolom `Kategori`
+> (mis. `statistics, dashboard`). Urutan tab mengikuti kolom `Urutan`: supaya "Dashboard" muncul
+> tepat setelah "Statistics", pastikan ada karya ber-kategori dashboard dengan `Urutan` kecil.
 
 ### Menambah foto testimoni baru
 

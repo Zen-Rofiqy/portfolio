@@ -21,6 +21,11 @@ Detail lengkap ada di [README.md](README.md) — baca itu dulu untuk alur setup,
   dari Sheet, bukan file. `SHEET_ID` + utilitas fetch ada di `src/lib/sheet.js`; tiap section
   punya data cadangan di kode (dipakai kalau Sheet tak terjangkau) yang sebaiknya ikut
   disinkronkan saat konten berubah permanen. Detail kolom per tab di README bagian 6.
+- **Filter kategori Portfolio** (tab All/Statistics/Dashboard/…) diturunkan otomatis dari
+  kolom `Kategori` di tab `Portfolio` — tidak di-hardcode (lihat `work/Works.jsx`). Satu karya
+  boleh punya **beberapa kategori** dipisah koma (mis. `statistics, dashboard`) sehingga muncul
+  di beberapa tab sekaligus; parsing-nya `splitCategories()` di `work/Data.jsx`. Urutan tab ikut
+  urutan kemunculan pertama kategori di data (yang terurut lewat kolom `Urutan`).
 - **Modal "Details"** (dipakai bersama oleh Portfolio & Qualification) di-*keyed* per slug
   `Folder`. Isinya digabung dari dua tab: `Details` (1 baris/folder: org, subtitle, meta,
   deskripsi, skills) + `DetailMedia` (1 baris/media: img/file/link). Join + fetch-nya di

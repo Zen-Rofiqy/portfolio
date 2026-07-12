@@ -75,6 +75,11 @@ graph LR
 > dari tab `Details` + `DetailMedia` yang digabung per `Folder` di
 > `work/details.jsx` (hook `useDetails`). Qualification menyambung lewat kolom
 > `Folder` di tab `Kualifikasi`.
+>
+> Tab filter Portfolio (All/Statistics/Dashboard/…) diturunkan otomatis dari kolom
+> `Kategori`, bukan di-hardcode. Satu karya bisa punya beberapa kategori (dipisah koma,
+> mis. `statistics, dashboard`) → muncul di beberapa tab; di-parse `splitCategories()`
+> (`work/Data.jsx`), difilter di `work/Works.jsx`.
 
 ## Mana yang punya data konten terpisah
 
