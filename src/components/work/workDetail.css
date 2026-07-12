@@ -1,0 +1,429 @@
+/* ================== MODAL DETAIL PORTFOLIO ================== */
+/* Overlay full-screen; konten scroll di dalam kartu (fleksibel di
+   segala lebar layar — di HP tetap enak & tak pernah bocor). */
+.wd__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem 1rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  animation: wd-fade 0.25s ease;
+}
+
+.wd__content {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  max-height: 88vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: var(--container-color);
+  border-radius: 1.25rem;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+  animation: wd-pop 0.25s ease;
+}
+
+@keyframes wd-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes wd-pop {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+}
+
+.wd__close {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  font-size: 1.25rem;
+  z-index: 2;
+  transition: background-color 0.3s;
+}
+
+.wd__close:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* ---- Banner cover ---- */
+.wd__banner {
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  overflow: hidden;
+  background-color: var(--body-color);
+}
+
+.wd__banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---- Body ---- */
+.wd__body {
+  padding: 1.5rem;
+}
+
+/* ---- Header org (logo + nama) ---- */
+.wd__head {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.wd__org-logo {
+  flex-shrink: 0;
+  display: block;
+  width: 48px;
+  height: 48px;
+  border-radius: 0.6rem;
+  overflow: hidden;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.wd__org-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.wd__head-text {
+  min-width: 0;
+}
+
+.wd__title {
+  font-size: var(--h2-font-size);
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+  margin-bottom: 0.15rem;
+}
+
+.wd__org-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: var(--small-font-size);
+  font-weight: var(--font-medium);
+  color: var(--title-color);
+  transition: color 0.3s;
+}
+
+a.wd__org-name:hover {
+  color: var(--title-color-dark);
+  text-decoration: underline;
+}
+
+.wd__org-name i {
+  font-size: 0.9rem;
+}
+
+.wd__subtitle {
+  font-size: var(--smaller-font-size);
+  color: var(--text-color);
+  margin-top: 0.1rem;
+}
+
+.wd__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.wd__meta-item {
+  position: relative;
+  font-size: var(--smaller-font-size);
+  color: var(--text-color);
+}
+
+.wd__meta-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: -0.55rem;
+  top: 50%;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: var(--text-color);
+  transform: translateY(-50%);
+  opacity: 0.6;
+}
+
+.wd__desc {
+  margin-bottom: 1.5rem;
+}
+
+.wd__desc-item {
+  position: relative;
+  font-size: var(--small-font-size);
+  color: var(--text-color);
+  line-height: 1.6;
+  padding-left: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+
+.wd__desc-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--title-color);
+}
+
+/* ---- Section umum ---- */
+.wd__section {
+  margin-top: 1.5rem;
+}
+
+.wd__section-title {
+  font-size: var(--normal-font-size);
+  color: var(--title-color);
+  font-weight: var(--font-medium);
+  margin-bottom: 0.85rem;
+}
+
+.wd__count {
+  color: var(--text-color);
+  font-weight: var(--font-normal);
+}
+
+/* ---- Daftar media ---- */
+.wd__media-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.wd__media {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  text-align: left;
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+  background-color: transparent;
+  transition: background-color 0.3s;
+}
+
+.wd__media:hover {
+  background-color: var(--body-color);
+}
+
+.wd__media-thumb {
+  flex-shrink: 0;
+  width: 84px;
+  height: 60px;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background-color: var(--body-color);
+}
+
+.wd__media-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Thumbnail versi ikon (PDF/link tanpa gambar preview) */
+.wd__media-thumb--icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--title-color);
+  font-size: 1.6rem;
+}
+
+.wd__media-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.wd__media-title {
+  font-size: var(--small-font-size);
+  color: var(--title-color);
+  font-weight: var(--font-medium);
+  line-height: 1.35;
+}
+
+.wd__media-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: var(--smaller-font-size);
+  color: var(--text-color);
+}
+
+/* ---- Skills (pill) ---- */
+.wd__skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.wd__skill {
+  font-size: var(--smaller-font-size);
+  color: var(--title-color);
+  background-color: var(--body-color);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 0.35rem 0.75rem;
+  border-radius: 2rem;
+}
+
+/* ================== LIGHTBOX (gambar besar) ================== */
+.wd__lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--z-modal) + 10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1rem;
+  background-color: rgba(0, 0, 0, 0.85);
+  animation: wd-fade 0.2s ease;
+}
+
+.wd__lb-figure {
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.wd__lb-figure img {
+  max-width: 100%;
+  max-height: 78vh;
+  object-fit: contain;
+  border-radius: 0.5rem;
+}
+
+.wd__lb-caption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  color: #fff;
+  font-size: var(--small-font-size);
+  text-align: center;
+}
+
+.wd__lb-count {
+  font-size: var(--smaller-font-size);
+  opacity: 0.7;
+}
+
+.wd__lb-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 1.5rem;
+  transition: background-color 0.3s;
+}
+
+.wd__lb-close:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.wd__lb-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 1.75rem;
+  transition: background-color 0.3s;
+}
+
+.wd__lb-nav:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.wd__lb-prev {
+  left: 1rem;
+}
+
+.wd__lb-next {
+  right: 1rem;
+}
+
+/* ================== BREAKPOINTS ================== */
+@media screen and (max-width: 576px) {
+  .wd__overlay {
+    padding: 0;
+  }
+
+  .wd__content {
+    max-width: 100%;
+    max-height: 100vh;
+    height: 100%;
+    border-radius: 0;
+  }
+
+  .wd__banner {
+    aspect-ratio: 16 / 8;
+  }
+
+  .wd__body {
+    padding: 1.25rem;
+  }
+
+  .wd__media-thumb {
+    width: 72px;
+    height: 52px;
+  }
+
+  .wd__lb-nav {
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: 1.4rem;
+  }
+
+  .wd__lb-prev {
+    left: 0.35rem;
+  }
+
+  .wd__lb-next {
+    right: 0.35rem;
+  }
+}

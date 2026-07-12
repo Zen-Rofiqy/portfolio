@@ -25,7 +25,8 @@ export const coverUrl = (folder) =>
 // ============================================================
 export const fallbackProjects = [
   { order: 1,  folder: "surveyor-ipm-bandung",           title: "Surveyor - IPM Bandung",            category: "statistics",       link: "" },
-  { order: 2,  folder: "works-kknt-ipb",                 title: "Works of KKNT IPB",                 category: "statistics",       link: "" },
+  { order: 2,  folder: "marketing-specialist-statify",   title: "Marketing Specialist - Statify",    category: "statistics",       link: "" },
+  { order: 3,  folder: "works-kknt-ipb",                 title: "Works of KKNT IPB",                 category: "statistics",       link: "" },
   { order: 3,  folder: "tancap-app-bangkit-academy",     title: "Tancap App - Bangkit Academy",      category: "machine learning", link: "" },
   { order: 4,  folder: "works-pkm-rsh",                  title: "Works of PKM RSH",                  category: "statistics",       link: "" },
   { order: 5,  folder: "porstat-2022-instagram-feeds",   title: "Porstat 2022 Instagram Feeds",      category: "design",           link: "" },

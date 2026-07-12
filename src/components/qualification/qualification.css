@@ -64,6 +64,49 @@
   font-size: var(--smaller-font-size);
 }
 
+/* Blok timeline yang bisa diklik (punya detail) → buka modal Details. */
+.qualification__block--link {
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  margin: -0.5rem -0.75rem;
+  border-radius: 0.75rem;
+  transition: background-color 0.3s;
+}
+
+.qualification__block--link:hover {
+  background-color: var(--container-color);
+}
+
+.qualification__block--link:focus-visible {
+  outline: 2px solid var(--title-color);
+  outline-offset: 2px;
+}
+
+.qualification__details {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+  font-size: var(--smaller-font-size);
+  font-weight: var(--font-medium);
+  color: var(--title-color);
+}
+
+.qualification__details i {
+  transition: transform 0.3s;
+}
+
+.qualification__block--link:hover .qualification__details i {
+  transform: translateX(3px);
+}
+
+/* Tombol "Show more" (paginasi entri timeline) */
+.qualification__more {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--mb-1);
+}
+
 .qualification__rounder {
   display: inline-block;
   width: 13px;

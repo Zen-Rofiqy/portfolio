@@ -51,6 +51,10 @@
   display: flex;
   align-items: center;
   column-gap: 0.25rem;
+  /* reset tampilan default <button> (dipakai saat kartu buka modal) */
+  background: none;
+  padding: 0;
+  font-family: inherit;
 }
 
 .work__button-icon {
@@ -66,6 +70,13 @@
 .active-work {
   background-color: var(--title-color);
   color: var(--container-color);
+}
+
+/* Tombol "Show more" (paginasi kartu portfolio) */
+.work__more {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--mb-2-5);
 }
 
 /* ================== BREAKPOINTS ================== */

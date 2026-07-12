@@ -1,9 +1,14 @@
 // ============================================================
 //  KUALIFIKASI via Google Sheet — tab "Kualifikasi"
 //  ------------------------------------------------------------
-//  Kolom tab: Tampilkan | Tab | Judul | Institusi | Periode | Urutan
+//  Kolom tab: Tampilkan | Tab | Judul | Institusi | Periode | Urutan | Folder
 //  Kolom "Tab" diisi Education atau Experience (boleh juga
 //  Pendidikan/Pengalaman). Urutan dihitung per tab.
+//  Kolom "Folder" (opsional) = slug proyek Portfolio (mis.
+//  "surveyor-ipm-bandung"). Kalau diisi DAN slug itu punya entri
+//  di src/components/work/details.jsx, baris timeline jadi bisa
+//  diklik → membuka modal Details yang sama dengan Portfolio.
+//  Biarkan kosong untuk peran yang tak punya cerita/karya.
 // ============================================================
 import { isTruthy, useSheetList } from "../../lib/sheet";
 
@@ -16,7 +21,7 @@ export const fallbackQualifications = [
   { tab: "education",  title: "Middle School",             place: "SMPIT Al-Ummah",  period: "Aug 2015 - Aug 2018", order: 3 },
   { tab: "education",  title: "Elementary School",         place: "SDN 2 Cibadak",   period: "Jan 2009 - Apr 2015", order: 4 },
   { tab: "experience", title: "Data Analyst",              place: "PT.ASDP Indonesia Ferry (Persero)", period: "Sep 2024 - Des 2024", order: 1 },
-  { tab: "experience", title: "Surveyor IPM Bandung",      place: "IPB University",  period: "Aug 2024",            order: 2 },
+  { tab: "experience", title: "Surveyor IPM Bandung",      place: "IPB University",  period: "Aug 2024",            order: 2, folder: "surveyor-ipm-bandung" },
   { tab: "experience", title: "Media and Branding",        place: "KKN-T IPB 2024 | Sukawening Village", period: "Jun 2024 - Aug 2024", order: 3 },
   { tab: "experience", title: "Machine Learning Cohort",   place: "Bangkit Academy", period: "Feb 2024 - Jul 2024", order: 4 },
   { tab: "experience", title: "Secretary",                 place: "Chess Unity of Agriculture IPB", period: "Feb 2023 - Feb 2024", order: 5 },
@@ -40,6 +45,7 @@ const mapRow = (r) =>
         place: r.institusi || "",
         period: r.periode || "",
         order: Number(r.urutan) || 0,
+        folder: r.folder || "",
       }
     : null;
 
