@@ -64,6 +64,40 @@ export const orgLogoUrl = (file) =>
     : encodeURI(`${import.meta.env.BASE_URL}orgs/${file}`);
 
 export const projectDetails = {
+  "data-analyst-asdp": {
+    org: {
+      name: "PT ASDP Indonesia Ferry (Persero)",
+      logo: "asdp-indonesia-ferry.jpg",
+      link: "https://www.linkedin.com/company/asdpindonesiaferry/",
+    },
+    subtitle: "Internship · On-site",
+    meta: ["Sep 2024 - Dec 2024 · 4 mos", "Jakarta, Indonesia"],
+    description: [
+      "Data Analyst in the Business Support division.",
+      "Managed data requests (transaction, production, performance) using SQL, Python, and Excel for analysis.",
+      "Developed Market Share and Portwise Dashboards in Tableau to visualize company performance.",
+      "Monitored operational dashboards and supported tariff simulation data entry.",
+      "Awarded Best Presentation among 18 interns.",
+    ],
+    media: [
+      { title: "A few examples of my work", img: "A few examples of my work.jpg" },
+      { title: "Final presentation", img: "Final presentation.jpg" },
+      { title: "Best Presentation Award", img: "Best Presentation Award.jpg" },
+      { title: "Prizes for the Best Presentations Award", img: "Prizes for the Best Presentations Award.jpg" },
+      { title: "Internship certificate", img: "Internship certificate.jpg" },
+      { title: "Last Day", img: "Last Day.jpg" },
+    ],
+    skills: [
+      "SQL",
+      "Python",
+      "Microsoft Excel",
+      "Tableau",
+      "Statistical Analysis",
+      "Data Visualization",
+      "Dashboard Development",
+    ],
+  },
+
   "surveyor-ipm-bandung": {
     org: {
       name: "IPB University",
@@ -94,6 +128,39 @@ export const projectDetails = {
       "Effective Communication and Public Relations",
       "Data Collection",
     ],
+  },
+
+  "works-kknt-ipb": {
+    org: {
+      name: "KKN-T IPB 2024 | Desa Sukawening",
+      logo: "kkn-t-ipb.jpg",
+      link: "",
+    },
+    subtitle: "Part-time · Hybrid",
+    meta: [
+      "Jun 2024 - Aug 2024 · 3 mos",
+      "Bogor Regency, West Java, Indonesia",
+    ],
+    description: [
+      "Developed and managed 42 Instagram posts.",
+      "Served as prayer reader and MC in workshops and events.",
+      "Taught and mentored 5th-grade students in a waste management program.",
+      "Designed and analyzed a survey, compiled findings into a village profile book.",
+      "Added 33 street names on Google Maps and created street signs.",
+      "Assisted SMEs with QRIS installation and online presence.",
+    ],
+    media: [
+      {
+        title: "2024 Sukawening Village Profile and Potential Book",
+        file: "Buku Profil dan Potensi Desa Sukawening.pdf",
+        thumb: "2024 Sukawening Village Profile and Potential Book.jpg",
+      },
+      { title: "Instagram Feeds 1", img: "Instagram Feeds 1.jpg" },
+      { title: "Instagram Feeds 2", img: "Instagram Feeds 2.jpg" },
+      { title: "Instagram Feeds 3", img: "Instagram Feeds 3.jpg" },
+      { title: "Instagram Feeds 4", img: "Instagram Feeds 4.jpg" },
+    ],
+    skills: ["Graphic Design", "Instagram Feed design"],
   },
 
   "marketing-specialist-statify": {

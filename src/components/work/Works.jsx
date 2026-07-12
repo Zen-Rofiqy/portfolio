@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { fallbackProjects, fetchProjects } from "./Data";
+import { fallbackProjects, fetchProjects, splitCategories } from "./Data";
 import { useDetails } from "./details";
 import WorkItems from "./WorkItems";
 import WorkDetail from "./WorkDetail";
@@ -31,29 +31,39 @@ const Works = () => {
     };
   }, []);
 
+  // Normalisasi: satu karya bisa punya beberapa kategori (dipisah koma).
+  const normalized = useMemo(
+    () => allProjects.map((p) => ({ ...p, categories: splitCategories(p.category) })),
+    [allProjects]
+  );
+
   // Filter kategori diturunkan otomatis dari data (tak perlu hardcode).
+  // Urutan tab mengikuti kemunculan pertama tiap kategori di data (yang
+  // terurut lewat kolom Urutan).
   const categories = useMemo(() => {
     const uniq = [];
-    allProjects.forEach((p) => {
-      if (p.category && !uniq.includes(p.category)) uniq.push(p.category);
+    normalized.forEach((p) => {
+      p.categories.forEach((c) => {
+        if (!uniq.includes(c)) uniq.push(c);
+      });
     });
     return ["all", ...uniq];
-  }, [allProjects]);
+  }, [normalized]);
 
   // Peta detail (dari Sheet, fallback ke kode) untuk modal "Details".
   const details = useDetails();
 
   // Lampirkan konten detail (kalau ada) ke tiap proyek berdasarkan folder.
   const withDetail = useMemo(
-    () => allProjects.map((p) => ({ ...p, detail: details[p.folder] || null })),
-    [allProjects, details]
+    () => normalized.map((p) => ({ ...p, detail: details[p.folder] || null })),
+    [normalized, details]
   );
 
   const projects = useMemo(
     () =>
       activeCategory === "all"
         ? withDetail
-        : withDetail.filter((p) => p.category === activeCategory),
+        : withDetail.filter((p) => p.categories.includes(activeCategory)),
     [withDetail, activeCategory]
   );
 

@@ -4,10 +4,22 @@
 //  Konfigurasi SHEET_ID ada di src/lib/sheet.js (dipakai
 //  bersama semua section). Kolom tab: Tampilkan | Judul |
 //  Kategori | Folder | Urutan | Link.
+//
+//  KATEGORI bisa lebih dari satu per karya: pisahkan dengan
+//  koma (mis. "statistics, dashboard") supaya karya yang sama
+//  muncul di beberapa tab filter sekaligus.
 // ============================================================
 import { fetchSheetRows, isTruthy } from "../../lib/sheet";
 
 export const SHEET_NAME = "Portfolio"; // nama tab di dalam Google Sheet
+
+// Pecah nilai kolom Kategori jadi daftar tag (dipisah koma/titik-koma),
+// di-lowercase & dibuang yang kosong. "statistics, Dashboard" → ["statistics","dashboard"].
+export const splitCategories = (v) =>
+  String(v || "")
+    .split(/[,;]/)
+    .map((s) => s.trim().toLowerCase())
+    .filter(Boolean);
 
 // Nama file cover di tiap folder proyek (public/portfolio/<folder>/cover.jpg)
 const COVER_FILE = "cover.jpg";
@@ -24,8 +36,9 @@ export const coverUrl = (folder) =>
 //  Kolomnya sama persis dengan kolom di Google Sheet.
 // ============================================================
 export const fallbackProjects = [
+  { order: 1,  folder: "data-analyst-asdp",              title: "Data Analyst - ASDP Indonesia Ferry", category: "statistics, dashboard", link: "" },
   { order: 1,  folder: "surveyor-ipm-bandung",           title: "Surveyor - IPM Bandung",            category: "statistics",       link: "" },
-  { order: 2,  folder: "marketing-specialist-statify",   title: "Marketing Specialist - Statify",    category: "statistics",       link: "" },
+  { order: 2,  folder: "marketing-specialist-statify",   title: "Marketing Specialist - Statify",    category: "statistics, dashboard", link: "" },
   { order: 3,  folder: "works-kknt-ipb",                 title: "Works of KKNT IPB",                 category: "statistics",       link: "" },
   { order: 3,  folder: "tancap-app-bangkit-academy",     title: "Tancap App - Bangkit Academy",      category: "machine learning", link: "" },
   { order: 4,  folder: "works-pkm-rsh",                  title: "Works of PKM RSH",                  category: "statistics",       link: "" },
