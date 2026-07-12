@@ -50,7 +50,7 @@ kalau fetch gagal, tiap section jatuh ke `Data.jsx`/fallback bawaannya sendiri.
 
 ```mermaid
 graph LR
-  Sheet["Google Sheet<br/>(data live)"] -->|"tab Teks · Portfolio · Kualifikasi · Testimoni<br/>Services · Skills · CV · Sosial · Kontak"| Lib["src/lib/sheet.js<br/>(SHEET_ID + fetch CSV)"]
+  Sheet["Google Sheet<br/>(data live)"] -->|"tab Teks · Portfolio · Kualifikasi · Testimoni · Services<br/>Skills · CV · Sosial · Kontak · Details · DetailMedia"| Lib["src/lib/sheet.js<br/>(SHEET_ID + fetch CSV)"]
 
   Lib --> Home
   Lib --> About
@@ -70,6 +70,11 @@ graph LR
 
 > Home & Footer berbagi tab `Sosial` lewat `src/lib/socials.jsx` (kolom `Lokasi`
 > menentukan tampil di samping Home, di Footer, atau keduanya).
+>
+> Work & Qualification berbagi **modal "Details"** (`work/WorkDetail.jsx`): isinya
+> dari tab `Details` + `DetailMedia` yang digabung per `Folder` di
+> `work/details.jsx` (hook `useDetails`). Qualification menyambung lewat kolom
+> `Folder` di tab `Kualifikasi`.
 
 ## Mana yang punya data konten terpisah
 
@@ -81,8 +86,8 @@ Kalau mau ubah **isi/teks/daftar**, cari `Data.jsx` dulu; kalau mau ubah **tampi
 | About | **Sheet tab `Teks`** (deskripsi & info box) via `lib/texts.js` + **Sheet tab `CV`** (link CV aktif) via `about/Data.jsx` | `Info.jsx`, `Data.jsx` |
 | Skills | **Sheet tab `Skills`** + `skills/Data.jsx` (fallback & urutan kategori); ikon di `icons.jsx` | 6 kartu skill (`Frontend.jsx`, `Database.jsx`, dst) |
 | Services | **Sheet tab `Services`** + `services/Data.jsx` (fallback) | — |
-| Qualification | **Sheet tab `Kualifikasi`** + `qualification/Data.jsx` (fallback) | — |
-| Work | **Sheet tab `Portfolio`** + `work/Data.jsx` (fallback) | `Works.jsx`, `WorkItems.jsx` |
+| Qualification | **Sheet tab `Kualifikasi`** + `qualification/Data.jsx` (fallback); kolom `Folder` menyambung ke modal Details (`work/details.jsx`) | — |
+| Work | **Sheet tab `Portfolio`** + `work/Data.jsx` (fallback); modal Details dari **Sheet tab `Details` + `DetailMedia`** via `work/details.jsx` (`useDetails`), fallback `projectDetails` | `Works.jsx`, `WorkItems.jsx`, `WorkDetail.jsx` |
 | Testimonials | **Sheet tab `Testimoni`** + `testimonials/Data.jsx` (fallback) | — |
 | Contact | **Sheet tab `Kontak`** (kartu "Talk to me") + `contact/Data.jsx` (fallback); form kirim pesan EmailJS tetap di `Contact.jsx` | — |
 | Footer | **Sheet tab `Sosial`** (ikon sosial, filter footer) via `lib/socials.jsx`; judul/nav/copyright hardcoded | — |
@@ -130,9 +135,10 @@ src/
 - **Swiper** dipakai untuk slider (testimoni).
 - **EmailJS** menangani pengiriman form kontak tanpa backend.
 - **Google Sheet** jadi sumber konten teks: satu spreadsheet dengan tab `Portfolio`,
-  `Teks`, `Kualifikasi`, `Testimoni`, `Services`, `Skills`, `CV`, `Sosial`, `Kontak`. Tiap
-  section men-`fetch` CSV tab-nya saat runtime lewat `src/lib/sheet.js` (difilter
-  `Tampilkan`/`Aktif`, diurutkan `Urutan` kalau ada); kalau gagal/ID kosong, jatuh ke data
-  cadangan di kode supaya tak pernah blank.
+  `Teks`, `Kualifikasi`, `Testimoni`, `Services`, `Skills`, `CV`, `Sosial`, `Kontak`,
+  `Details`, `DetailMedia`. Tiap section men-`fetch` CSV tab-nya saat runtime lewat
+  `src/lib/sheet.js` (difilter `Tampilkan`/`Aktif`, diurutkan `Urutan` kalau ada); kalau
+  gagal/ID kosong, jatuh ke data cadangan di kode supaya tak pernah blank. Tab `Details` +
+  `DetailMedia` digabung per `Folder` (join, bukan section sendiri) untuk mengisi modal Details.
 
 > Diagram Mermaid tampil otomatis di GitHub & preview Markdown VSCode.

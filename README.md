@@ -55,8 +55,9 @@ git push
 | Bagian | Lokasi |
 |--------|--------|
 | Projek / karya | **Google Sheet** tab `Portfolio` + gambar `public/portfolio/<slug>/cover.jpg` |
+| Isi modal "Details" (deskripsi, media, skill — dipakai Portfolio & Qualification) | **Google Sheet** tab `Details` + `DetailMedia`; file media di `public/portfolio/<slug>/` |
 | Teks Home & About (subjudul, deskripsi, angka pengalaman) | **Google Sheet** tab `Teks` |
-| Qualification / pengalaman | **Google Sheet** tab `Kualifikasi` |
+| Qualification / pengalaman | **Google Sheet** tab `Kualifikasi` (kolom `Folder` menyambung ke modal Details) |
 | Testimoni | **Google Sheet** tab `Testimoni` + foto `public/testimonials/` |
 | Services | **Google Sheet** tab `Services` |
 | CV (tombol Download CV) | **Google Sheet** tab `CV` |
@@ -103,6 +104,8 @@ beberapa tab — bisa diubah dari mana saja (termasuk HP) **tanpa push & tanpa t
 | `Skills` | Kartu skill per kategori: nama, level, ikon, urutan |
 | `Sosial` | Ikon link sosial di samping Home & footer (LinkedIn, GitHub, Tableau, dst) |
 | `Kontak` | Kartu "Talk to me": Email, Whatsapp, Instagram, dst |
+| `Details` | Isi modal "Details" per proyek: org, subtitle, meta, deskripsi, skill (1 baris/folder) |
+| `DetailMedia` | Daftar media di modal "Details": gambar/PDF/link (1 baris/media) |
 
 Gambar tetap di repo (`public/portfolio/`, `public/testimonials/`, `public/social/`), jadi aman & cepat.
 Konfigurasi `SHEET_ID` ada di [src/lib/sheet.js](src/lib/sheet.js).
@@ -119,7 +122,7 @@ Konfigurasi `SHEET_ID` ada di [src/lib/sheet.js](src/lib/sheet.js).
 
    | File template | Nama tab |
    |---------------|----------|
-   | [portfolio-sheet-template.csv](sheet-templates/portfolio-sheet-template.csv) | `Portfolio` |
+   | [sheet-template-portfolio.csv](sheet-templates/sheet-template-portfolio.csv) | `Portfolio` |
    | [sheet-template-teks.csv](sheet-templates/sheet-template-teks.csv) | `Teks` |
    | [sheet-template-kualifikasi.csv](sheet-templates/sheet-template-kualifikasi.csv) | `Kualifikasi` |
    | [sheet-template-testimoni.csv](sheet-templates/sheet-template-testimoni.csv) | `Testimoni` |
@@ -128,6 +131,8 @@ Konfigurasi `SHEET_ID` ada di [src/lib/sheet.js](src/lib/sheet.js).
    | [sheet-template-skills.csv](sheet-templates/sheet-template-skills.csv) | `Skills` |
    | [sheet-template-sosial.csv](sheet-templates/sheet-template-sosial.csv) | `Sosial` |
    | [sheet-template-kontak.csv](sheet-templates/sheet-template-kontak.csv) | `Kontak` |
+   | [sheet-template-details.csv](sheet-templates/sheet-template-details.csv) | `Details` |
+   | [sheet-template-detailmedia.csv](sheet-templates/sheet-template-detailmedia.csv) | `DetailMedia` |
 
 2. Ubah kolom **Tampilkan** jadi checkbox: pilih kolomnya → `Insert > Checkbox`
    (di semua tab yang punya kolom itu).
@@ -173,6 +178,7 @@ Kunci yang tersedia: `home_subjudul`, `home_deskripsi`, `about_deskripsi`,
 | Institusi | Nama sekolah / organisasi / perusahaan |
 | Periode | Teks bebas, mis. `Aug 2021 - Aug 2025` |
 | Urutan | Urutan dalam tab-nya (kecil = paling atas) |
+| Folder | (Opsional) slug proyek yang sama dengan tab `Portfolio`/`Details`. Diisi = baris Experience jadi bisa diklik "Details" (buka modal yang sama dengan Portfolio). Kosongkan untuk peran tanpa karya |
 
 **`Testimoni`**
 
@@ -249,6 +255,46 @@ Kunci yang tersedia: `home_subjudul`, `home_deskripsi`, `about_deskripsi`,
 | Data | Teks yang tampil (email, nomor, username) |
 | Link | Tujuan tombol "Write me", mis. `mailto:...`, `https://wa.me/...` |
 | Urutan | Urutan kartu (kecil = duluan) |
+
+**`Details`** — isi modal "Details" (1 baris = 1 proyek/folder)
+
+| Kolom | Isi |
+|-------|-----|
+| Folder | Slug proyek — **wajib sama persis** dengan `Folder` di tab `Portfolio` & nama folder `public/portfolio/<slug>/`. Ini kunci penghubungnya |
+| Org | (Opsional) nama organisasi, mis. `IPB University`. Kosong = blok org tak tampil |
+| Logo | (Opsional) nama file logo di `public/orgs/` (atau URL penuh), mis. `ipb-university.jpg` |
+| LinkOrg | (Opsional) URL profil org (mis. LinkedIn) — nama & logo jadi bisa diklik |
+| Subtitle | (Opsional) teks kecil di bawah nama org, mis. `Part-time · On-site` |
+| Meta | (Opsional) baris info (tanggal/lokasi), **satu item per baris** dalam satu sel (Alt+Enter) |
+| Deskripsi | (Opsional) poin deskripsi, **satu poin per baris** dalam satu sel (Alt+Enter) |
+| Skills | (Opsional) tag skill, **satu skill per baris** dalam satu sel (Alt+Enter) |
+
+**`DetailMedia`** — daftar media di modal "Details" (1 baris = 1 media)
+
+| Kolom | Isi |
+|-------|-----|
+| Folder | Slug proyek — sama dengan kolom `Folder` di tab `Details`. Menyambungkan media ke proyeknya |
+| Urutan | Angka urutan media dalam satu proyek (kecil = duluan) |
+| Judul | Judul media (wajib), mis. `Certificate of Appreciation` |
+| Tipe | `img` (gambar → buka besar/lightbox), `file` (buka tab baru, mis. PDF), atau `link` (URL luar). Kosong = ditebak otomatis dari `Nilai` |
+| Nilai | Untuk `img`/`file`: nama file di `public/portfolio/<folder>/`. Untuk `link`: URL penuh |
+| Thumb | (Opsional) nama file gambar untuk thumbnail (mis. screenshot halaman-1 PDF). Kosong = ikon placeholder |
+
+> File gambar/PDF tetap ditaruh manual di `public/portfolio/<slug>/` (commit + push);
+> Sheet hanya menyimpan *nama file*-nya. Logo org di `public/orgs/`.
+
+### Menambah detail portfolio (modal "Details")
+
+1. Taruh file media (gambar `.jpg`, PDF, dll) di `public/portfolio/<slug>/`, dan logo org
+   (kalau ada) di `public/orgs/`. Commit + push.
+2. Tambah 1 baris di tab `Details` dengan `Folder` = slug proyek, isi org/deskripsi/skill
+   seperlunya (semua opsional kecuali `Folder`).
+3. Tambah 1 baris **per media** di tab `DetailMedia` dengan `Folder` yang sama.
+4. (Opsional) untuk memunculkan "Details" di Experience, isi kolom `Folder` di tab
+   `Kualifikasi` dengan slug yang sama.
+
+> Slug `Folder` dipakai bersama Portfolio & Qualification — satu folder = satu sumber
+> konten, muncul di dua tempat tanpa digandakan.
 
 ### Menambah sosial / kontak baru
 

@@ -16,10 +16,17 @@ Detail lengkap ada di [README.md](README.md) — baca itu dulu untuk alur setup,
 - Preview lokal: `npm run dev` (http://localhost:5173).
 - **Hampir semua teks konten digerakkan Google Sheet** (satu spreadsheet, banyak tab):
   `Portfolio`, `Teks` (Home/About), `Kualifikasi`, `Testimoni`, `Services`, `Skills`, `CV`,
-  `Sosial` (ikon sosial samping & footer), `Kontak` (kartu "Talk to me") — diedit
+  `Sosial` (ikon sosial samping & footer), `Kontak` (kartu "Talk to me"),
+  `Details` + `DetailMedia` (isi modal "Details" ala LinkedIn) — diedit
   dari Sheet, bukan file. `SHEET_ID` + utilitas fetch ada di `src/lib/sheet.js`; tiap section
   punya data cadangan di kode (dipakai kalau Sheet tak terjangkau) yang sebaiknya ikut
   disinkronkan saat konten berubah permanen. Detail kolom per tab di README bagian 6.
+- **Modal "Details"** (dipakai bersama oleh Portfolio & Qualification) di-*keyed* per slug
+  `Folder`. Isinya digabung dari dua tab: `Details` (1 baris/folder: org, subtitle, meta,
+  deskripsi, skills) + `DetailMedia` (1 baris/media: img/file/link). Join + fetch-nya di
+  `src/components/work/details.jsx` (hook `useDetails`); fallback = `projectDetails` di file
+  yang sama. Kolom `Folder` di tab `Kualifikasi` (opsional) menyambungkan satu Experience
+  ke modal Details itu — kosongkan untuk peran tanpa karya.
 - Tab `CV` cuma berisi **link** ke Google Docs (bukan file PDF) — kolom `Aktif` menentukan
   versi CV mana yang dipakai tombol "Download CV". Dokumen Gdocs-nya wajib di-share
   "Anyone with the link: Viewer" biar link export PDF-nya bisa diakses publik.
